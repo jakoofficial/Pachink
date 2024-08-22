@@ -18,6 +18,8 @@ func _input(event: InputEvent) -> void:
 		ball_inst.global_position = Vector2(spawner.global_position.x, spawner.global_position.y)
 		get_tree().root.add_child(ball_inst)
 		Manager.canSpawn = false
+		Manager.balls_left -= 1
+
 
 func _physics_process(delta: float) -> void:
 	var posX = self.global_position.x

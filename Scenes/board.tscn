@@ -15,22 +15,23 @@ move_speed = 2.5
 [node name="Barriers" type="Node2D" parent="."]
 position = Vector2(0, 40)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="PointBarrier" parent="Barriers" instance=ExtResource("1_dh0si")]
 position = Vector2(0, 300)
 scale = Vector2(2, 10)
 
 [node name="PointBarrier2" parent="Barriers" instance=ExtResource("1_dh0si")]
-position = Vector2(168, 600)
+position = Vector2(160, 600)
 
 [node name="PointBarrier3" parent="Barriers" instance=ExtResource("1_dh0si")]
-position = Vector2(328, 600)
+position = Vector2(320, 600)
 
 [node name="PointBarrier4" parent="Barriers" instance=ExtResource("1_dh0si")]
-position = Vector2(472, 600)
+position = Vector2(480, 600)
 
 [node name="PointBarrier5" parent="Barriers" instance=ExtResource("1_dh0si")]
-position = Vector2(632, 600)
+position = Vector2(640, 600)
 
 [node name="PointBarrier6" parent="Barriers" instance=ExtResource("1_dh0si")]
 position = Vector2(800, 300)
@@ -39,6 +40,7 @@ scale = Vector2(2, 10)
 [node name="pins_row1" type="Node2D" parent="."]
 position = Vector2(-48, 0)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="pin" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(128, 192)
@@ -76,6 +78,7 @@ position = Vector2(768, 192)
 [node name="pins_row2" type="Node2D" parent="."]
 position = Vector2(-48, 136)
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="pin" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(128, 192)
@@ -116,12 +119,26 @@ position = Vector2(768, 192)
 [node name="pin13" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(768, 312)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GUI" parent="CanvasLayer" instance=ExtResource("4_fyud1")]
-
 [node name="ScoreArea" type="Node2D" parent="."]
 
 [node name="PointArea" parent="ScoreArea" instance=ExtResource("5_plc3f")]
-position = Vector2(84, 608)
-scale = Vector2(1.2, 1)
+position = Vector2(80, 608)
+
+[node name="PointArea2" parent="ScoreArea" instance=ExtResource("5_plc3f")]
+position = Vector2(240, 608)
+points = 30
+
+[node name="PointArea3" parent="ScoreArea" instance=ExtResource("5_plc3f")]
+position = Vector2(400, 608)
+points = 50
+
+[node name="PointArea4" parent="ScoreArea" instance=ExtResource("5_plc3f")]
+position = Vector2(560, 608)
+points = 30
+
+[node name="PointArea5" parent="ScoreArea" instance=ExtResource("5_plc3f")]
+position = Vector2(720, 608)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("4_fyud1")]
