@@ -1,0 +1,115 @@
+[gd_scene load_steps=4 format=3 uid="uid://biyv1i7n0r816"]
+
+[ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="1_dh0si"]
+[ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="3_ljybg"]
+[ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="4_jnwh5"]
+
+[node name="Board" type="Node2D"]
+
+[node name="Barriers" type="Node2D" parent="."]
+position = Vector2(0, 40)
+metadata/_edit_group_ = true
+
+[node name="PointBarrier" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(0, 300)
+scale = Vector2(2, 10)
+
+[node name="PointBarrier2" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(168, 600)
+
+[node name="PointBarrier3" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(328, 600)
+
+[node name="PointBarrier4" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(472, 600)
+
+[node name="PointBarrier5" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(632, 600)
+
+[node name="PointBarrier6" parent="Barriers" instance=ExtResource("1_dh0si")]
+position = Vector2(800, 300)
+scale = Vector2(2, 10)
+
+[node name="pins_row1" type="Node2D" parent="."]
+position = Vector2(-48, 0)
+metadata/_edit_group_ = true
+
+[node name="pin" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(128, 192)
+
+[node name="pin2" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(192, 256)
+
+[node name="pin3" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(256, 192)
+
+[node name="pin4" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(320, 256)
+
+[node name="pin5" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(384, 192)
+
+[node name="pin6" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(448, 256)
+
+[node name="pin7" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(512, 192)
+
+[node name="pin8" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(576, 256)
+
+[node name="pin9" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(640, 192)
+
+[node name="pin10" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(704, 256)
+
+[node name="pin11" parent="pins_row1" instance=ExtResource("3_ljybg")]
+position = Vector2(768, 192)
+
+[node name="pins_row2" type="Node2D" parent="."]
+position = Vector2(-48, 136)
+metadata/_edit_group_ = true
+
+[node name="pin" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(128, 192)
+
+[node name="pin12" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(128, 312)
+
+[node name="pin2" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(192, 256)
+
+[node name="pin3" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(256, 192)
+
+[node name="pin4" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(320, 256)
+
+[node name="pin5" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(384, 192)
+
+[node name="pin6" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(448, 256)
+
+[node name="pin7" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(512, 192)
+
+[node name="pin8" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(576, 256)
+
+[node name="pin9" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(640, 192)
+
+[node name="pin10" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(704, 256)
+
+[node name="pin11" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(768, 192)
+
+[node name="pin13" parent="pins_row2" instance=ExtResource("3_ljybg")]
+position = Vector2(768, 312)
+
+[node name="Indicator" parent="." instance=ExtResource("4_jnwh5")]
+position = Vector2(400, 20)
+move_speed = 2.5
