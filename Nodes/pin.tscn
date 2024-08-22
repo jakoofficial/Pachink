@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mbhu"]
 radius = 16.0
 
-[node name="pin" type="StaticBody2D"]
+[node name="Pin" type="StaticBody2D"]
 physics_material_override = ExtResource("1_enw3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

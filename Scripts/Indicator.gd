@@ -5,7 +5,6 @@ extends Area2D
 @onready var ball = preload("res://Nodes/ball.tscn")
 @onready var spawner = $Spawner
 @onready var sprite = $Sprite2D as Sprite2D
-var canSpawn:bool = true
 
 var viewport_size = Vector2(0, 0)
 func _ready() -> void:
@@ -13,13 +12,17 @@ func _ready() -> void:
 	print(viewport_size)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action("drop_ball"):
+	if event.is_action("drop_ball") and Manager.canSpawn:
+		# Drop a ball
 		var ball_inst = ball.instantiate() as RigidBody2D
 		ball_inst.global_position = Vector2(spawner.global_position.x, spawner.global_position.y)
 		get_tree().root.add_child(ball_inst)
+		Manager.canSpawn = false
 
 func _physics_process(delta: float) -> void:
 	var posX = self.global_position.x
+	#Bounce Indicator at the edge of the viewport
 	if posX > viewport_size.x - (sprite.texture.get_width() / 2) or posX < 0 + (sprite.texture.get_width()/2):
 		move_speed = -move_speed
+	# Move Indicator
 	self.global_position.x += move_speed * 100 * delta
