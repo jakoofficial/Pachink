@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1k58arikvty8"]
+
+[ext_resource type="Texture2D" uid="uid://gp48bao5o51v" path="res://Sprites/Indicator.png" id="1_ivxyl"]
+[ext_resource type="Script" path="res://Scripts/Indicator.gd" id="1_obhmr"]
+
+[node name="Indicator" type="Area2D"]
+script = ExtResource("1_obhmr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ivxyl")
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2(0, -32)
