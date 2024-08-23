@@ -23,6 +23,7 @@ This project is only a simplified version of the pachinko game, made over a few 
 
 
 ## Author
+ Jacob Ø. Andersen
 
 - [@github](https://www.github.com/jakoofficial) - [@itch.io](https://pumpkin-dev.itch.io/)
 
