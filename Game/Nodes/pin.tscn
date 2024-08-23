@@ -1,16 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://ciarpbfyr7cej"]
+[gd_scene load_steps=9 format=3 uid="uid://ciarpbfyr7cej"]
 
+[ext_resource type="Script" path="res://Scripts/pin.gd" id="1_1bcbf"]
 [ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="1_enw3x"]
 [ext_resource type="Texture2D" uid="uid://cc3r0jibovof5" path="res://Sprites/Ball.png" id="2_xeje4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mbhu"]
-radius = 16.0
+radius = 26.0
 
-[node name="Pin" type="StaticBody2D"]
-physics_material_override = ExtResource("1_enw3x")
+[sub_resource type="Animation" id="Animation_vbhfu"]
+resource_name = "Hit"
+length = 0.26667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lemmj"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_3syui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ltx5q"]
+_data = {
+"Hit": SubResource("Animation_vbhfu"),
+"Idle": SubResource("Animation_lemmj"),
+"RESET": SubResource("Animation_3syui")
+}
+
+[node name="Pin" type="Area2D" groups=["Pin"]]
+script = ExtResource("1_1bcbf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5mbhu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xeje4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ltx5q")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = ExtResource("1_enw3x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_5mbhu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

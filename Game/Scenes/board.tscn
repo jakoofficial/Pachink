@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://biyv1i7n0r816"]
+[gd_scene load_steps=7 format=3 uid="uid://biyv1i7n0r816"]
 
 [ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="1_dh0si"]
 [ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="3_ljybg"]
 [ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="4_fyud1"]
 [ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="4_jnwh5"]
 [ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="5_plc3f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_50btl"]
+font_size = 10
+font_color = Color(0.666569, 0.666569, 0.666569, 1)
 
 [node name="Board" type="Node2D"]
 
@@ -142,3 +146,17 @@ position = Vector2(720, 608)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("4_fyud1")]
+
+[node name="Credit" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 72.0
+offset_right = -18.0
+offset_bottom = 95.0
+grow_horizontal = 0
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_50btl")
+horizontal_alignment = 2
+vertical_alignment = 1
