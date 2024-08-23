@@ -1,7 +1,0 @@
-version: "2.4"
-services:
-  client:
-    build: client-docker
-    ports: 
-      - "10000:80"
-  
