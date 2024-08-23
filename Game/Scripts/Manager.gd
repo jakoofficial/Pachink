@@ -7,6 +7,10 @@ var canSpawn:bool = true
 func reset():
 	score = 0
 	balls_left = 5
+	var balls_in_scene = get_node("/root/Board/Balls").get_children()
+	for b in balls_in_scene:
+		b.queue_free()
+	canSpawn = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):

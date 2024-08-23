@@ -1,9 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://gc7mtqfom5tm"]
+[gd_scene load_steps=7 format=3 uid="uid://gc7mtqfom5tm"]
 
 [ext_resource type="Script" path="res://Scripts/point_area.gd" id="1_ghksd"]
+[ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="2_kpdrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djhc4"]
 size = Vector2(128, 20)
+
+[sub_resource type="Curve" id="Curve_nd556"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.601124, 0.252747), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uwf43"]
+curve = SubResource("Curve_nd556")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iqajr"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(5, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_max = 422.54
+gravity = Vector3(0, 500, 0)
+linear_accel_min = 100.0
+linear_accel_max = 200.0
+damping_max = 22.043
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_uwf43")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.5
+collision_use_scale = true
 
 [node name="PointArea" type="Area2D"]
 scale = Vector2(1.2, 1)
@@ -27,5 +54,14 @@ grow_vertical = 0
 text = "Points"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_iqajr")
+texture = ExtResource("2_kpdrn")
+one_shot = true
+explosiveness = 1.0
+randomness = 0.21
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
