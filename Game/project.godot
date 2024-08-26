@@ -13,7 +13,10 @@ config_version=5
 config/name="Pachinko"
 run/main_scene="res://Scenes/board.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/image="res://Logo.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=5000
 
 [autoload]
 

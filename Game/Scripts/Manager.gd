@@ -3,6 +3,10 @@ extends Node
 var score: int = 0
 var balls_left: int = 5
 var canSpawn:bool = true
+var windowMode = DisplayServer.WINDOW_MODE_WINDOWED
+
+func _set_window_mode():
+	DisplayServer.window_set_mode(windowMode)
 
 func reset():
 	score = 0
@@ -14,6 +18,6 @@ func reset():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit"):
-		get_tree().quit()
+		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	if event.is_action_pressed("restart"):
 		reset()
