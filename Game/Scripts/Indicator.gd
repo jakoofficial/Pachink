@@ -12,7 +12,7 @@ func _ready() -> void:
 	print(viewport_size)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action("drop_ball") and Manager.canSpawn:
+	if event.is_action("drop_ball") and Manager.canSpawn and Manager.balls_left > 0:
 		# Drop a ball
 		var ball_inst = ball.instantiate() as RigidBody2D
 		ball_inst.global_position = Vector2(spawner.global_position.x, spawner.global_position.y)
