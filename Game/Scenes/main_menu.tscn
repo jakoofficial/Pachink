@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=7 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
 
@@ -13,6 +13,9 @@ font_size = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssq4f"]
 bg_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gtnvp"]
+font_size = 36
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_qoo0f")
@@ -143,12 +146,29 @@ layout_mode = 2
 text = "Back"
 
 [node name="BoardSelect" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BoardSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -166.0
+offset_right = 123.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select a board"
+label_settings = SubResource("LabelSettings_gtnvp")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BoardSelect"]
 layout_mode = 1
@@ -158,11 +178,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer"]
+layout_mode = 2
+
+[node name="BoardSelectBack" type="Button" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Cancel"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
-[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/BoardSelectBack" to="." method="_on_board_select_back_pressed"]

@@ -6,11 +6,11 @@ var canSpawn:bool = true
 var windowMode = DisplayServer.WINDOW_MODE_WINDOWED
 
 var boards = [
-	"res://Scenes/board.tscn",
-	"res://Scenes/tumble_board.tscn"
-]
+	["res://Scenes/board.tscn", "Board"],
+	["res://Scenes/tumble_board.tscn", "Tumbler"]
+	]
 
-var curBoard = boards[0]
+var curBoard = boards[0][0]
 
 func _set_window_mode():
 	DisplayServer.window_set_mode(windowMode)
