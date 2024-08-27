@@ -91,6 +91,10 @@ position = Vector2(144, 328)
 [node name="pin2" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(192, 269)
 
+[node name="pin14" parent="pins_row2" instance=ExtResource("3_ljybg")]
+z_index = -1
+position = Vector2(57, 269)
+
 [node name="pin3" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(256, 192)
 
@@ -115,6 +119,10 @@ position = Vector2(640, 192)
 [node name="pin10" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(704, 269)
 
+[node name="pin15" parent="pins_row2" instance=ExtResource("3_ljybg")]
+z_index = -1
+position = Vector2(840, 269)
+
 [node name="pin11" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(768, 192)
 
@@ -125,7 +133,7 @@ position = Vector2(752, 328)
 
 [node name="PointArea" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(80, 608)
-effect_color = Color(1, 0, 0, 1)
+effect_color = Color(0, 0.591563, 0.740791, 1)
 effect_life = 0.5
 
 [node name="PointArea2" parent="ScoreArea" instance=ExtResource("5_plc3f")]

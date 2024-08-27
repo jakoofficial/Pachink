@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=4 uid="uid://cwwnjhmettyhd"]
+
+[ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="1_ea0kc"]
+[ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="2_8t17q"]
+[ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="2_b3f07"]
+[ext_resource type="Texture2D" uid="uid://oply4sw7j603" path="res://Tilesets/Tiles.png" id="3_j8h30"]
+[ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="3_nf8sd"]
+[ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="4_x00v0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x76gq"]
+texture = ExtResource("3_j8h30")
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 5, -4, 7, 0, 8, 2.52574, 7.36857, 4, 7, 5, 5, 5, -8, -5, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 8, 5, 8, 5, -8, -5, -8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -5, -4, -7, 0, -8, 2.52574, -7.36857, 4, -7, 5, -5, 5, 8, -5, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 0, -3, 4, -4, 5, -6, 5, -8, -5, -8, -5, -6)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 5, 5, 8, -5, 8, -5, 5, 8, -8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 5, 5, 8, -8, 8, 2, -2, 5, -2, 7, -1, 8, 1)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5, -8, -8, 5, -8, -8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 4, 0, 3, 4, 4, 5, 6, 5, 8, -5, 8, -5, 6)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, -6, -4, -7, 0, -8, 4, -7, 6, -6, 7, -4, 8, 0, 7, 4, 6, 6, 4, 7, 0, 8, -4, 7, -6, 6, -7, 4, -8, 0, -7, -4)
+
+[sub_resource type="TileSet" id="TileSet_kwmxd"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = ExtResource("2_b3f07")
+sources/0 = SubResource("TileSetAtlasSource_x76gq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pde47"]
+font_size = 10
+font_color = Color(0.666569, 0.666569, 0.666569, 1)
+
+[node name="Board" type="Node2D"]
+
+[node name="Indicator" parent="." instance=ExtResource("1_ea0kc")]
+position = Vector2(400, 20)
+move_speed = 2.5
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAEAAUAAAABAAEAAAAEAAYAAAAAAAEAAAAFAAQAAAACAAAAAAAFAAUAAAACAAEAAAAEAAoAAAABAAEAAAAEAAsAAAAAAAEAAAAFAAoAAAACAAEAAAAFAAkAAAACAAAAAAATAAQAAAACAAAAABAUAAUAAAABAAEAABATAAUAAAACAAEAABAEAAwAAAABAAIAAAAEAAcAAAABAAIAAAAUAAYAAAAAAAEAAAAUAAcAAAABAAIAAAAAAAgAAAACAAAAACAAAAcAAAACAAEAACAYAAgAAAACAAAAADAYAAcAAAACAAEAADAHAA4AAAADAAAAAAARAA4AAAADAAAAAAAOAAoAAAACAAAAABAPAAsAAAABAAEAABAOAAsAAAACAAEAABAPAAwAAAABAAIAABAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAJAAsAAAABAAEAAAAJAAwAAAABAAIAAAAMAA4AAAAAAAIAAAAMAA0AAAAAAAAAAAARAAIAAAADAAAAAAAHAAIAAAADAAAAAAADAA0AAAADAAAAAAAVAA0AAAADAAAAAAATAAkAAAACAAAAABAUAAoAAAABAAEAABATAAoAAAACAAEAABAUAAsAAAAAAAEAAAAUAAwAAAABAAIAAAAPAAcAAAADAAAAAAAJAAcAAAADAAAAAAAMAAUAAAADAAAAAAAMAAgAAAADAAAAAAAYAA8AAAADAAAAAAAAAA8AAAADAAAAAAAAAAMAAAADAAAAAAAYAAMAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_kwmxd")
+
+[node name="Barriers" type="Node2D" parent="."]
+position = Vector2(0, 40)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PointBarrier" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(0, 300)
+scale = Vector2(2, 10)
+
+[node name="PointBarrier2" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(160, 600)
+
+[node name="PointBarrier3" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(320, 600)
+
+[node name="PointBarrier4" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(480, 600)
+
+[node name="PointBarrier5" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(640, 600)
+
+[node name="PointBarrier6" parent="Barriers" instance=ExtResource("2_8t17q")]
+position = Vector2(800, 300)
+scale = Vector2(2, 10)
+
+[node name="ScoreArea" type="Node2D" parent="."]
+
+[node name="PointArea" parent="ScoreArea" instance=ExtResource("3_nf8sd")]
+position = Vector2(80, 608)
+effect_color = Color(0, 0.591563, 0.740791, 1)
+effect_life = 0.5
+
+[node name="PointArea2" parent="ScoreArea" instance=ExtResource("3_nf8sd")]
+position = Vector2(240, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea3" parent="ScoreArea" instance=ExtResource("3_nf8sd")]
+position = Vector2(400, 608)
+points = 50
+effect_color = Color(0, 0.764052, 0, 1)
+effect_life = 1.5
+
+[node name="PointArea4" parent="ScoreArea" instance=ExtResource("3_nf8sd")]
+position = Vector2(560, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea5" parent="ScoreArea" instance=ExtResource("3_nf8sd")]
+position = Vector2(720, 608)
+effect_color = Color(1, 0, 0, 1)
+effect_life = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("4_x00v0")]
+metadata/_edit_lock_ = true
+
+[node name="Credit" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 72.0
+offset_right = -18.0
+offset_bottom = 95.0
+grow_horizontal = 0
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_pde47")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
