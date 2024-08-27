@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ciarpbfyr7cej"]
+[gd_scene load_steps=11 format=3 uid="uid://ciarpbfyr7cej"]
 
 [ext_resource type="Script" path="res://Scripts/pin.gd" id="1_1bcbf"]
 [ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="1_enw3x"]
-[ext_resource type="Texture2D" uid="uid://cc3r0jibovof5" path="res://Sprites/Ball.png" id="2_xeje4"]
+[ext_resource type="Texture2D" uid="uid://cc3r0jibovof5" path="res://Sprites/pin.png" id="2_xeje4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mbhu"]
-radius = 26.0
+radius = 21.0
 
 [sub_resource type="Animation" id="Animation_vbhfu"]
 resource_name = "Hit"
@@ -48,11 +48,18 @@ _data = {
 "RESET": SubResource("Animation_3syui")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l5jf"]
+radius = 18.0278
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ihgn7"]
+polygon = PackedVector2Array(-16, 0, -11, -11, 0, -16, 11, -11, 16, 0, 11, 11, 0, 16, -11, 11)
+
 [node name="Pin" type="Area2D" groups=["Pin"]]
 script = ExtResource("1_1bcbf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5mbhu")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xeje4")
@@ -65,8 +72,11 @@ libraries = {
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 physics_material_override = ExtResource("1_enw3x")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_5mbhu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_5l5jf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ihgn7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

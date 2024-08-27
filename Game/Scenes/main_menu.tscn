@@ -1,0 +1,197 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmjkht7rropl6"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyhud"]
+bg_color = Color(0.141172, 0.206835, 0.354204, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iff4t"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_okrh3"]
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssq4f"]
+bg_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gtnvp"]
+font_size = 36
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_qoo0f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gyhud")
+
+[node name="Menu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -141.5
+offset_top = 104.0
+offset_right = 141.5
+offset_bottom = 192.0
+grow_horizontal = 2
+text = "Pachinko"
+label_settings = SubResource("LabelSettings_iff4t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -50.5
+offset_right = 75.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="Settings" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.0
+offset_top = 184.0
+offset_right = 71.0
+offset_bottom = 207.0
+grow_horizontal = 2
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_okrh3")
+horizontal_alignment = 1
+
+[node name="Settings" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 248.0
+offset_top = 191.0
+offset_right = -248.0
+offset_bottom = -97.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ssq4f")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+flat = true
+
+[node name="Back" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[node name="BoardSelect" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/BoardSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -166.0
+offset_right = 123.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select a board"
+label_settings = SubResource("LabelSettings_gtnvp")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/BoardSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer"]
+layout_mode = 2
+
+[node name="BoardSelectBack" type="Button" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Cancel"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/BoardSelectBack" to="." method="_on_board_select_back_pressed"]

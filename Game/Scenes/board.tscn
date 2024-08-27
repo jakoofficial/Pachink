@@ -16,6 +16,8 @@ font_color = Color(0.666569, 0.666569, 0.666569, 1)
 position = Vector2(400, 20)
 move_speed = 2.5
 
+[node name="Balls" type="Node2D" parent="."]
+
 [node name="Barriers" type="Node2D" parent="."]
 position = Vector2(0, 40)
 metadata/_edit_group_ = true
@@ -43,109 +45,122 @@ scale = Vector2(2, 10)
 
 [node name="pins_row1" type="Node2D" parent="."]
 position = Vector2(-48, 0)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="pin" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(128, 192)
 
 [node name="pin2" parent="pins_row1" instance=ExtResource("3_ljybg")]
-position = Vector2(192, 256)
+position = Vector2(192, 259)
 
 [node name="pin3" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(256, 192)
 
 [node name="pin4" parent="pins_row1" instance=ExtResource("3_ljybg")]
-position = Vector2(320, 256)
+position = Vector2(320, 259)
 
 [node name="pin5" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(384, 192)
 
 [node name="pin6" parent="pins_row1" instance=ExtResource("3_ljybg")]
-position = Vector2(448, 256)
+position = Vector2(448, 259)
 
 [node name="pin7" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(512, 192)
 
 [node name="pin8" parent="pins_row1" instance=ExtResource("3_ljybg")]
-position = Vector2(576, 256)
+position = Vector2(576, 259)
 
 [node name="pin9" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(640, 192)
 
 [node name="pin10" parent="pins_row1" instance=ExtResource("3_ljybg")]
-position = Vector2(704, 256)
+position = Vector2(704, 259)
 
 [node name="pin11" parent="pins_row1" instance=ExtResource("3_ljybg")]
 position = Vector2(768, 192)
 
 [node name="pins_row2" type="Node2D" parent="."]
 position = Vector2(-48, 136)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="pin" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(128, 192)
 
 [node name="pin12" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(128, 312)
+position = Vector2(144, 328)
 
 [node name="pin2" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(192, 256)
+position = Vector2(192, 269)
+
+[node name="pin14" parent="pins_row2" instance=ExtResource("3_ljybg")]
+z_index = -1
+position = Vector2(57, 269)
 
 [node name="pin3" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(256, 192)
 
 [node name="pin4" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(320, 256)
+position = Vector2(320, 269)
 
 [node name="pin5" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(384, 192)
 
 [node name="pin6" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(448, 256)
+position = Vector2(448, 269)
 
 [node name="pin7" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(512, 192)
 
 [node name="pin8" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(576, 256)
+position = Vector2(576, 269)
 
 [node name="pin9" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(640, 192)
 
 [node name="pin10" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(704, 256)
+position = Vector2(704, 269)
+
+[node name="pin15" parent="pins_row2" instance=ExtResource("3_ljybg")]
+z_index = -1
+position = Vector2(840, 269)
 
 [node name="pin11" parent="pins_row2" instance=ExtResource("3_ljybg")]
 position = Vector2(768, 192)
 
 [node name="pin13" parent="pins_row2" instance=ExtResource("3_ljybg")]
-position = Vector2(768, 312)
+position = Vector2(752, 328)
 
 [node name="ScoreArea" type="Node2D" parent="."]
 
 [node name="PointArea" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(80, 608)
+effect_color = Color(0, 0.591563, 0.740791, 1)
+effect_life = 0.5
 
 [node name="PointArea2" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(240, 608)
 points = 30
+effect_color = Color(0, 0, 1, 1)
 
 [node name="PointArea3" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(400, 608)
 points = 50
+effect_color = Color(0, 0.764052, 0, 1)
+effect_life = 1.5
 
 [node name="PointArea4" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(560, 608)
 points = 30
+effect_color = Color(0, 0, 1, 1)
 
 [node name="PointArea5" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(720, 608)
+effect_color = Color(1, 0, 0, 1)
+effect_life = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource("4_fyud1")]
+metadata/_edit_lock_ = true
 
 [node name="Credit" type="Label" parent="CanvasLayer"]
 anchors_preset = 1
@@ -160,3 +175,4 @@ text = "Jacob Ø. Andersen"
 label_settings = SubResource("LabelSettings_50btl")
 horizontal_alignment = 2
 vertical_alignment = 1
+metadata/_edit_lock_ = true

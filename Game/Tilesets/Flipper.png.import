@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2fyedlbxwiru"
-path="res://.godot/imported/Ball.png-4e6e58f62343d577c3d22d908457c6a4.ctex"
+uid="uid://blmkvb7svaiqm"
+path="res://.godot/imported/Flipper.png-5a190a9ab6571ea13ec33087297e8a0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Ball.png"
-dest_files=["res://.godot/imported/Ball.png-4e6e58f62343d577c3d22d908457c6a4.ctex"]
+source_file="res://Tilesets/Flipper.png"
+dest_files=["res://.godot/imported/Flipper.png-5a190a9ab6571ea13ec33087297e8a0d.ctex"]
 
 [params]
 

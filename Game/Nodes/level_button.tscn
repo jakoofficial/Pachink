@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpykn2hv0qg5s"]
+
+[ext_resource type="Texture2D" uid="uid://cudhs1jkmskuj" path="res://icon.svg" id="1_hhjk0"]
+[ext_resource type="Script" path="res://Scripts/level_button.gd" id="2_ivs0l"]
+
+[node name="LevelButton" type="Button"]
+text = "Classic"
+icon = ExtResource("1_hhjk0")
+icon_alignment = 1
+vertical_icon_alignment = 0
+script = ExtResource("2_ivs0l")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
