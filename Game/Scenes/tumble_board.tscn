@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cwwnjhmettyhd"]
+[gd_scene load_steps=11 format=4 uid="uid://cwwnjhmettyhd"]
 
 [ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="1_ea0kc"]
 [ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="2_8t17q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://oply4sw7j603" path="res://Tilesets/Tiles.png" id="3_j8h30"]
 [ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="3_nf8sd"]
 [ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="4_x00v0"]
+[ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="7_un68h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x76gq"]
 texture = ExtResource("3_j8h30")
@@ -20,7 +21,7 @@ texture = ExtResource("3_j8h30")
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 5, 5, 8, -5, 8, -5, 5, 8, -8)
 2:0/0 = 0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 5, 5, 8, -8, 8, 2, -2, 5, -2, 7, -1, 8, 1)
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -2, 6, -1, 7, 0, 8, 2, 8, 6, 6, 8, -8, 8, 0, -1)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5, -8, -8, 5, -8, -8)
 2:2/0 = 0
@@ -47,8 +48,52 @@ move_speed = 2.5
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAEAAUAAAABAAEAAAAEAAYAAAAAAAEAAAAFAAQAAAACAAAAAAAFAAUAAAACAAEAAAAEAAoAAAABAAEAAAAEAAsAAAAAAAEAAAAFAAoAAAACAAEAAAAFAAkAAAACAAAAAAATAAQAAAACAAAAABAUAAUAAAABAAEAABATAAUAAAACAAEAABAEAAwAAAABAAIAAAAEAAcAAAABAAIAAAAUAAYAAAAAAAEAAAAUAAcAAAABAAIAAAAAAAgAAAACAAAAACAAAAcAAAACAAEAACAYAAgAAAACAAAAADAYAAcAAAACAAEAADAHAA4AAAADAAAAAAARAA4AAAADAAAAAAAOAAoAAAACAAAAABAPAAsAAAABAAEAABAOAAsAAAACAAEAABAPAAwAAAABAAIAABAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAJAAsAAAABAAEAAAAJAAwAAAABAAIAAAAMAA4AAAAAAAIAAAAMAA0AAAAAAAAAAAARAAIAAAADAAAAAAAHAAIAAAADAAAAAAADAA0AAAADAAAAAAAVAA0AAAADAAAAAAATAAkAAAACAAAAABAUAAoAAAABAAEAABATAAoAAAACAAEAABAUAAsAAAAAAAEAAAAUAAwAAAABAAIAAAAPAAcAAAADAAAAAAAJAAcAAAADAAAAAAAMAAUAAAADAAAAAAAMAAgAAAADAAAAAAAYAA8AAAADAAAAAAAAAA8AAAADAAAAAAAAAAMAAAADAAAAAAAYAAMAAAADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAUAAAABAAEAAAAEAAYAAAAAAAEAAAAFAAQAAAACAAAAAAAFAAUAAAACAAEAAAAEAAoAAAABAAEAAAAEAAsAAAAAAAEAAAAFAAoAAAACAAEAAAAFAAkAAAACAAAAAAATAAQAAAACAAAAABAUAAUAAAABAAEAABATAAUAAAACAAEAABAEAAwAAAABAAIAAAAEAAcAAAABAAIAAAAUAAYAAAAAAAEAAAAUAAcAAAABAAIAAAAAAAgAAAACAAAAACAAAAcAAAACAAEAACAYAAgAAAACAAAAADAYAAcAAAACAAEAADAOAAoAAAACAAAAABAPAAsAAAABAAEAABAOAAsAAAACAAEAABAPAAwAAAABAAIAABAKAAoAAAACAAAAAAAKAAsAAAACAAEAAAAJAAwAAAABAAIAAAAMAA4AAAAAAAIAAAAMAA0AAAAAAAAAAAATAAkAAAACAAAAABAUAAoAAAABAAEAABATAAoAAAACAAEAABAUAAsAAAAAAAEAAAAUAAwAAAABAAIAAAAJAAsAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_kwmxd")
+
+[node name="Pins" type="Node2D" parent="."]
+
+[node name="Pin" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(240, 80)
+
+[node name="Pin14" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(16, 112)
+
+[node name="Pin2" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(560, 80)
+
+[node name="Pin3" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(784, 112)
+
+[node name="Pin4" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(688, 432)
+
+[node name="Pin5" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(784, 496)
+
+[node name="Pin6" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(560, 464)
+
+[node name="Pin7" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(240, 464)
+
+[node name="Pin8" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(112, 432)
+
+[node name="Pin9" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(16, 496)
+
+[node name="Pin10" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(304, 240)
+
+[node name="Pin11" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(496, 240)
+
+[node name="Pin12" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(400, 176)
+
+[node name="Pin13" parent="Pins" instance=ExtResource("7_un68h")]
+position = Vector2(400, 272)
 
 [node name="Barriers" type="Node2D" parent="."]
 position = Vector2(0, 40)
