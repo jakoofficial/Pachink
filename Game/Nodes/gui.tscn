@@ -1,10 +1,173 @@
-[gd_scene load_steps=4 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=15 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i7vso"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_suitv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tdty"]
+bg_color = Color(0.310617, 0.310617, 0.310617, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3cbs"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jehxg"]
+bg_color = Color(0.266575, 0.266575, 0.266575, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_pbd7o"]
+Button/styles/hover = SubResource("StyleBoxFlat_2tdty")
+Button/styles/normal = SubResource("StyleBoxFlat_i3cbs")
+Button/styles/pressed = SubResource("StyleBoxFlat_jehxg")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1nkr0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y57tb"]
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_celk7"]
+font_size = 20
+
+[sub_resource type="Animation" id="Animation_22w3w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(250, 632)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver/Background:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(250, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver/Background:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(632, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOver/Background:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_rcpn2"]
+resource_name = "GameOver"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Background:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0, 249.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver/Background:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(640, -0.25, 0, 0.141991, 265.5, 216, -0.858009, -223.5, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver/Background:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_pgj2m"]
+resource_name = "Idle"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver/Background:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0349066, -0.25, 0, 0.25, 0, -0.0349066, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver/Background:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(250, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver/Background:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(216, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_try12"]
+_data = {
+"GameOver": SubResource("Animation_rcpn2"),
+"Idle": SubResource("Animation_pgj2m"),
+"RESET": SubResource("Animation_22w3w")
+}
 
 [node name="GUI" type="Control"]
 process_mode = 3
@@ -95,6 +258,7 @@ offset_top = -40.0
 offset_right = 48.0
 offset_bottom = -8.0
 grow_vertical = 0
+theme = SubResource("Theme_pbd7o")
 text = "||"
 
 [node name="ClickableArea" type="Button" parent="."]
@@ -110,7 +274,90 @@ offset_right = 328.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="GameOver"]
+self_modulate = Color(0.309804, 0.309804, 0.309804, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = 32.0
+offset_right = 150.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(150, 75)
+texture = SubResource("CanvasTexture_1nkr0")
+
+[node name="Label" type="Label" parent="GameOver/Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_y57tb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="GameOver/Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 14.0
+offset_top = 46.0
+offset_right = -14.0
+offset_bottom = 77.0
+grow_horizontal = 2
+text = "Final score: 0"
+label_settings = SubResource("LabelSettings_celk7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -46.0
+offset_right = 20.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="GameOver/Background/HBoxContainer"]
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="AgainButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "Play again"
+
+[node name="MainmenuButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "Main menu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_try12")
+}
+
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2" to="." method="_on_pause_back_button_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton" to="." method="_on_pause_menu_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="button_up" from="ClickableArea" to="." method="_on_clickable_area_button_up"]
+[connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/AgainButton" to="." method="_on_again_button_pressed"]
+[connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/MainmenuButton" to="." method="_on_mainmenu_button_pressed"]
