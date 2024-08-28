@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=9 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
+[ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="2_4matt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyhud"]
 bg_color = Color(0.141172, 0.206835, 0.354204, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_iff4t"]
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_mumsv"]
+font_size = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_okrh3"]
 font_size = 12
@@ -48,8 +52,23 @@ offset_top = 104.0
 offset_right = 141.5
 offset_bottom = 192.0
 grow_horizontal = 2
-text = "Pachinko"
+text = "Pachink"
 label_settings = SubResource("LabelSettings_iff4t")
+horizontal_alignment = 1
+
+[node name="Version" type="Label" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 128.0
+offset_top = 160.0
+offset_right = 187.0
+offset_bottom = 183.0
+grow_horizontal = 2
+text = "Version"
+label_settings = SubResource("LabelSettings_mumsv")
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu"]
 layout_mode = 1
@@ -83,7 +102,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
 
-[node name="Label" type="Label" parent="CanvasLayer/Menu"]
+[node name="Author" type="Label" parent="CanvasLayer/Menu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -188,6 +207,14 @@ text = "Cancel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("2_4matt")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+animation = "Fade"
 
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

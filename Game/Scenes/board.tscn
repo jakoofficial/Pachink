@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://biyv1i7n0r816"]
+[gd_scene load_steps=8 format=3 uid="uid://biyv1i7n0r816"]
 
 [ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="1_dh0si"]
 [ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="3_ljybg"]
 [ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="4_fyud1"]
 [ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="4_jnwh5"]
 [ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="5_plc3f"]
+[ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="6_lu0hl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50btl"]
 font_size = 10
@@ -176,3 +177,13 @@ label_settings = SubResource("LabelSettings_50btl")
 horizontal_alignment = 2
 vertical_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("6_lu0hl")]
+top_level = true
+z_index = 20
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+animation = "Fade"

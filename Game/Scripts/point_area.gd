@@ -24,3 +24,5 @@ func _on_body_entered(body: Node2D) -> void:
 		Manager.score += points
 		Manager.canSpawn = true
 		effect.emitting = true
+		if Manager.balls_left <= 0:
+			Manager.gameOver = true
