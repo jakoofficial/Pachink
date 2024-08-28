@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Pachinko"
+config/name="Pachink"
+config/version="0.5"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://Logo.png"

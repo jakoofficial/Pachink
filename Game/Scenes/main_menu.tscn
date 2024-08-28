@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=9 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
+[ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="2_4matt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyhud"]
 bg_color = Color(0.141172, 0.206835, 0.354204, 1)
@@ -206,6 +207,14 @@ text = "Cancel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("2_4matt")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+animation = "Fade"
 
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

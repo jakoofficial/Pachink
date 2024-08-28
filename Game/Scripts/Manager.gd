@@ -2,15 +2,14 @@ extends Node
 
 var version = "a05"
 var score: int = 0
-var balls_left: int = 1
+var balls_left: int = 5
 var gameOver: bool = false
 var canSpawn:bool = true
 var windowMode = DisplayServer.WINDOW_MODE_FULLSCREEN
 var is_paused = false
-
 var boards = [
-	["res://Scenes/board.tscn", "Board"],
-	["res://Scenes/tumble_board.tscn", "Tumbler"]
+	["res://Scenes/board.tscn", "Boing", "res://Sprites/Board_icons/ico_Boing.png"],
+	["res://Scenes/tumble_board.tscn", "Tumble", "res://Sprites/Board_icons/ico_Tumble.png"]
 	]
 
 var curBoard = boards[0][0]
