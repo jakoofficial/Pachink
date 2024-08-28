@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var menu: Control = $CanvasLayer/Menu
+@onready var version_label: Label = $CanvasLayer/Menu/Version
 @onready var settings: Control = $CanvasLayer/Settings
 @onready var fullscreen_box = $CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox as CheckBox
 @onready var board_select_menu: Control = $CanvasLayer/BoardSelect
@@ -8,6 +9,7 @@ extends Node2D
 var board_button = preload("res://Nodes/level_button.tscn")
 
 func _ready():
+	version_label.text = str(Manager.version)
 	board_select_setup()
 
 func board_select_setup():
