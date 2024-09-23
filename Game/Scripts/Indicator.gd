@@ -7,11 +7,19 @@ extends Area2D
 @onready var sprite = $Sprite2D as Sprite2D
 @onready var GUI = $"../CanvasLayer/GUI"
 
+#drop power
+var dropPower: float = 0.0
+var minPower:float = 0.0
+var maxPower:float = 10.0
+var heldPower:float = 0.0
+var powerOverTime:float = 0.1
+
 var viewport_size = Vector2(0, 0)
 func _ready() -> void:
 	viewport_size = get_viewport().content_scale_size
 	print(viewport_size)
 	GUI.clickArea.connect(drop_ball)
+	%PowerBar.visible = false
 
 func drop_ball():
 	# Drop a ball
@@ -44,11 +52,6 @@ func drop_ball():
 		#tween.tween_property(sprite, "scale", Vector2(1.1,1.1), .1)
 		
 
-var dropPower: float = 0.0
-var minPower:float = 0.0
-var maxPower:float = 10.0
-var heldPower:float = 0.0
-var powerOverTime:float = 0.1
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("drop_ball"):
@@ -56,12 +59,15 @@ func _process(delta: float) -> void:
 		drop_ball()
 		heldPower = 0
 		dropPower = 0
+		%PowerBar.visible = false
 		
 	if Input.is_action_pressed("drop_ball"):
 		print(heldPower)
+		%PowerBar.visible = true
 		if heldPower > 1 or heldPower < 0:
 			powerOverTime = -powerOverTime
 		heldPower += powerOverTime * 0.2
+		%PowerBar.value = heldPower * 100
 	
 
 func _physics_process(delta: float) -> void:
