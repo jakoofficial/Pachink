@@ -22,8 +22,13 @@ func drop_ball():
 		tweenDrop.tween_property(sprite, "scale", Vector2(1, 1), 0.1)
 		
 		ball_inst.global_position = Vector2(spawner.global_position.x, spawner.global_position.y)
+		ball_inst.linear_velocity = Vector2.DOWN * dropPower *100
+		print("Power", dropPower)
+		
 		get_tree().root.get_node("/root/Board/Balls").add_child(ball_inst)
-		Manager.canSpawn = false
+		if not Manager.allowBallSpam:
+			Manager.canSpawn = false
+		Manager.ballsInGame.append(ball_inst)
 		Manager.balls_left -= 1
 	else:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
@@ -39,9 +44,25 @@ func drop_ball():
 		#tween.tween_property(sprite, "scale", Vector2(1.1,1.1), .1)
 		
 
-func _input(event):
-	if event.is_action_pressed("drop_ball"):
+var dropPower: float = 0.0
+var minPower:float = 0.0
+var maxPower:float = 10.0
+var heldPower:float = 0.0
+var powerOverTime:float = 0.1
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_released("drop_ball"):
+		dropPower = lerpf(minPower, maxPower, heldPower)
 		drop_ball()
+		heldPower = 0
+		dropPower = 0
+		
+	if Input.is_action_pressed("drop_ball"):
+		print(heldPower)
+		if heldPower > 1 or heldPower < 0:
+			powerOverTime = -powerOverTime
+		heldPower += powerOverTime * 0.2
+	
 
 func _physics_process(delta: float) -> void:
 	var posX = self.global_position.x

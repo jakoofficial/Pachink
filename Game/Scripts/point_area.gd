@@ -10,7 +10,6 @@ extends Area2D
 @export var effect_life: float = 1
 @export var effect_amount: int = 15
 
-
 @onready var points_text = $pointsText
 @onready var effect = $CPUParticles2D as CPUParticles2D
 
@@ -32,6 +31,7 @@ func _on_body_entered(body: Node2D) -> void:
 		Manager.score += points
 		Manager.canSpawn = true
 		effect.emitting = true
-		if Manager.balls_left <= 0:
+		Manager.ballsInGame.erase(body)
+		if Manager.balls_left <= 0 and Manager.ballsInGame.size() <= 0:
 			await get_tree().create_timer(.6).timeout
 			Manager.gameOver = true

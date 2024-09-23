@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://mjmna5165xsm"]
+[gd_scene load_steps=7 format=3 uid="uid://mjmna5165xsm"]
 
 [ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="1_08qci"]
 [ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="2_k5yk0"]
 [ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="4_hdt46"]
 [ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="5_6dyho"]
-[ext_resource type="PackedScene" uid="uid://chhao10wyugcb" path="res://Nodes/collectable.tscn" id="6_ggqyi"]
 [ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="6_q3hpj"]
-[ext_resource type="PackedScene" uid="uid://bt0lobg0qveg8" path="res://Nodes/spinnies.tscn" id="7_k785w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50btl"]
 font_size = 10
@@ -27,7 +25,7 @@ metadata/_edit_lock_ = true
 
 [node name="PointBarrier" parent="Barriers" instance=ExtResource("2_k5yk0")]
 position = Vector2(0, 300)
-scale = Vector2(2, 10)
+scale = Vector2(2, 100)
 
 [node name="PointBarrier2" parent="Barriers" instance=ExtResource("2_k5yk0")]
 position = Vector2(160, 600)
@@ -43,6 +41,11 @@ position = Vector2(640, 600)
 
 [node name="PointBarrier6" parent="Barriers" instance=ExtResource("2_k5yk0")]
 position = Vector2(800, 300)
+scale = Vector2(2, 100)
+
+[node name="PointBarrier7" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(397, 477)
+rotation = 1.57079
 scale = Vector2(2, 10)
 
 [node name="ScoreArea" type="Node2D" parent="."]
@@ -106,15 +109,3 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 animation = "Fade"
-
-[node name="Collectable" parent="." instance=ExtResource("6_ggqyi")]
-position = Vector2(394, 382)
-
-[node name="Collectable2" parent="." instance=ExtResource("6_ggqyi")]
-position = Vector2(261, 370)
-
-[node name="Collectable3" parent="." instance=ExtResource("6_ggqyi")]
-position = Vector2(528, 357)
-
-[node name="Spinnies" parent="." instance=ExtResource("7_k785w")]
-position = Vector2(400, 473)

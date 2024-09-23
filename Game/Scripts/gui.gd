@@ -25,21 +25,17 @@ func _process(delta: float) -> void:
 	balls_left_text.text = "Balls: "+str(Manager.balls_left)
 	
 	if Manager.gameOver:
-		#Manager.is_paused = true
 		var starParentNode = $"../../Stars"
 		
 		for starChild in starParentNode.get_children():
 			starChild.tween.kill()
 			starChild.free()
-		print(starParentNode.get_children())
-		#starParentNode.queue_free()
 		get_tree().paused = true
 		game_over.visible = true
 		$PauseButton.visible = false
 		final_score_label.text = "Final score: "+str(Manager.score)
 		Manager.collectedStarsTotal += Manager.collectedStarsCurLevel
-		#for c in stars_collected.get_children():
-			#c.visible = true
+		
 		if not game_over_anim_done:
 			can_emit_effect = true
 			animation.play("GameOver")
@@ -94,8 +90,6 @@ func _on_mainmenu_button_pressed():
 	transition.play_anim()
 	await get_tree().create_timer(1.0).timeout
 	transition.black_screen()
-	
-	
 	
 	get_tree().paused = false
 	Manager.is_paused = false

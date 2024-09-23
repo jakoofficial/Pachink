@@ -201,17 +201,37 @@ layout_mode = 2
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="CheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Back")
 focus_neighbor_bottom = NodePath("../../Back")
 flat = true
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ball spam"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+dragger_visibility = 1
+
+[node name="BallSpamCheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="Back" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../HBoxContainer/CheckBox")
-focus_neighbor_bottom = NodePath("../HBoxContainer/CheckBox")
+focus_neighbor_top = NodePath("../HBoxContainer/FullscreenCheckBox")
+focus_neighbor_bottom = NodePath("../HBoxContainer/FullscreenCheckBox")
 text = "Back"
 
 [node name="BoardSelect" type="Control" parent="CanvasLayer"]
@@ -363,7 +383,8 @@ animation = "Fade"
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_exited"]
-[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/FullscreenCheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2/BallSpamCheckBox" to="." method="_on_ball_spam_check_box_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/GameSettingsBtn" to="." method="_on_game_settings_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/BoardSelectBack" to="." method="_on_board_select_back_pressed"]

@@ -108,7 +108,7 @@ metadata/_edit_lock_ = true
 
 [node name="PointBarrier" parent="Barriers" instance=ExtResource("2_8t17q")]
 position = Vector2(0, 300)
-scale = Vector2(2, 10)
+scale = Vector2(2, 100)
 
 [node name="PointBarrier2" parent="Barriers" instance=ExtResource("2_8t17q")]
 position = Vector2(160, 600)
@@ -124,7 +124,7 @@ position = Vector2(640, 600)
 
 [node name="PointBarrier6" parent="Barriers" instance=ExtResource("2_8t17q")]
 position = Vector2(800, 300)
-scale = Vector2(2, 10)
+scale = Vector2(2, 100)
 
 [node name="ScoreArea" type="Node2D" parent="."]
 

@@ -28,6 +28,7 @@ Manager="*res://Scripts/Manager.gd"
 window/size/viewport_width=800
 window/size/viewport_height=600
 window/stretch/mode="canvas_items"
+window/version="0.6"
 
 [global_group]
 

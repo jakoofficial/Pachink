@@ -6,7 +6,8 @@ var ball_count:int = 5
 var balls_left: int
 var gameOver: bool = false
 var canSpawn:bool = true
-var windowMode = DisplayServer.WINDOW_MODE_FULLSCREEN
+#var windowMode = DisplayServer.WINDOW_MODE_FULLSCREEN
+var windowMode = DisplayServer.WINDOW_MODE_WINDOWED
 var is_paused = false
 var gamerulesChanged = false
 var boards = [
@@ -18,6 +19,8 @@ var boards = [
 var curBoard = boards[0][0]
 var collectedStarsTotal: int = 0
 var collectedStarsCurLevel: int = 0
+var ballsInGame: Array = []
+var allowBallSpam: bool = true
 
 func _ready():
 	balls_left = ball_count

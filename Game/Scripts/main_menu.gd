@@ -3,7 +3,7 @@ extends Node2D
 @onready var menu: Control = $CanvasLayer/Menu
 @onready var version_label: Label = $CanvasLayer/Menu/Version
 @onready var settings: Control = $CanvasLayer/Settings
-@onready var fullscreen_box = $CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox as CheckBox
+#@onready var fullscreen_box = $CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox as CheckBox
 
 @onready var board_select_menu: Control = $CanvasLayer/BoardSelect
 @onready var board_select = $CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/HBoxContainer
@@ -17,6 +17,7 @@ var mouse_over:bool = false
 
 func _ready():
 	version_label.text = str(Manager.version)
+	%BallSpamCheckBox.button_pressed = Manager.allowBallSpam
 	transition.black_screen()
 	await get_tree().create_timer(0.25).timeout
 	transition.play_anim_backwards()
@@ -39,22 +40,13 @@ func board_select_setup():
 
 	for a in boardButtons.size():
 		var btn = boardButtons[a] as Button
-		#print(btn)
 		btn.focus_neighbor_right = get_path_to(boardButtons[a])
 		btn.focus_neighbor_left = get_path_to(boardButtons[boardButtons.size()-1])
-		print(btn.focus_neighbor_right)
 		btn = null
-		#if a > 0 and a < boardButtons.size()-1:
-			#btn.focus_neighbor_left = get_path_to(boardButtons[a-1])
-			##btn.focus_neighbor_right = boardButtons[a+1]
-			##btn.focus_neighbor_left = boardButtons[a-1]
-		#if a == boardButtons.size():
-			#btn.focus_neighbor_right = get_path_to(boardButtons[0])
-			#btn.focus_neighbor_left = boardButtons[a-1]
 			
 func _process(delta):
 	if Manager.windowMode == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		fullscreen_box.button_pressed = true
+		$"%FullscreenCheckBox".button_pressed = true
 	
 	if not Manager.gamerulesChanged:
 		%SaveGameSettings_Btn.disabled = true
@@ -92,7 +84,7 @@ func _on_board_select_back_pressed() -> void:
 
 func _on_settings_pressed():
 	settings.visible = true
-	%CheckBox.grab_focus()
+	%FullscreenCheckBox.grab_focus()
 	menu.visible = false
 func _on_settings_back_pressed():
 	settings.visible = false
@@ -139,3 +131,6 @@ func _on_confirm_box_confirm(confirm:bool):
 func set_changes():
 	Manager.ball_count = %BallCountSlider.value
 	Manager.update_settings()
+
+func _on_ball_spam_check_box_toggled(toggled_on: bool) -> void:
+	Manager.allowBallSpam = toggled_on
