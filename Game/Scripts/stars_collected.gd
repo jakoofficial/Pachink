@@ -19,3 +19,4 @@ func gameEndCollectionShow():
 		star.texture = star_collected_spr
 		var multiplier:int = c+1
 		Manager.score += (20*multiplier)
+		tween.stop()

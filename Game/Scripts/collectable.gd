@@ -13,10 +13,12 @@ func _ready() -> void:
 
 func _process(delta):
 	sprite.rotation -= deg_to_rad(moveLenght - moveSpd)
+	if Manager.gameOver:
+		tween.kill()
 
 func hit():
 	Manager.collectedStarsCurLevel += 1
-	tween.stop()
+	tween.kill()
 	$Drip.emitting = false
 	$CollisionShape2D.queue_free()
 	$CPUParticles2D.emitting = true

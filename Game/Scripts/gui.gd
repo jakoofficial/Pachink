@@ -26,6 +26,13 @@ func _process(delta: float) -> void:
 	
 	if Manager.gameOver:
 		#Manager.is_paused = true
+		var starParentNode = $"../../Stars"
+		
+		for starChild in starParentNode.get_children():
+			starChild.tween.kill()
+			starChild.free()
+		print(starParentNode.get_children())
+		#starParentNode.queue_free()
 		get_tree().paused = true
 		game_over.visible = true
 		$PauseButton.visible = false
@@ -87,6 +94,9 @@ func _on_mainmenu_button_pressed():
 	transition.play_anim()
 	await get_tree().create_timer(1.0).timeout
 	transition.black_screen()
+	
+	
+	
 	get_tree().paused = false
 	Manager.is_paused = false
 	Manager.reset()

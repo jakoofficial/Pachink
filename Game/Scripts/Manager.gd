@@ -1,6 +1,6 @@
 extends Node
 
-var version = "a06"
+var version = "a07"
 var score: int = 0
 var ball_count:int = 5
 var balls_left: int
@@ -44,6 +44,5 @@ func reset():
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit") and !gameOver:
 		is_paused = true
-		#get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	if event.is_action_pressed("restart"):
 		reset()
