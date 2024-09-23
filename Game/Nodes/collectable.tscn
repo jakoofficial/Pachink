@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://chhao10wyugcb"]
+
+[ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_hkpt6"]
+[ext_resource type="Texture2D" uid="uid://ouas2p1lgnyw" path="res://Sprites/Collectable.png" id="1_tcdql"]
+
+[sub_resource type="Curve" id="Curve_y5djx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_no58t"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_qov7g"]
+max_value = 100.0
+_data = [Vector2(0, 42.8571), 0.0, -125.746, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4ls2q"]
+_data = [Vector2(0.286517, 1), 0.0, 1.66839, 0, 0, Vector2(1, 0), -4.97903, 0.0, 0, 0]
+point_count = 2
+
+[node name="Collectable" type="Area2D"]
+position = Vector2(81, 36)
+script = ExtResource("1_hkpt6")
+
+[node name="Drip" type="CPUParticles2D" parent="."]
+amount = 10
+randomness = 1.0
+texture = ExtResource("1_tcdql")
+emission_shape = 1
+emission_sphere_radius = 8.31
+direction = Vector2(0, 1)
+spread = 25.86
+gravity = Vector2(0, 9)
+initial_velocity_min = 40.4
+initial_velocity_max = 50.5
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.25
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_y5djx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_tcdql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_no58t")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_tcdql")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 75.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
+damping_max = 3.031
+damping_curve = SubResource("Curve_qov7g")
+angle_min = -160.0
+angle_max = 305.5
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_4ls2q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

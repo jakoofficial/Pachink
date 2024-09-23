@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://diwwdkuy2cnpo"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lxi36"]
+
+[node name="1star" type="Sprite2D"]
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_lxi36")

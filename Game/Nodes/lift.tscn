@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dprbtppurp8nh"]
+
+[ext_resource type="Texture2D" uid="uid://bp5m85562rywo" path="res://Sprites/Lift_arm.png" id="1_81y2k"]
+[ext_resource type="Texture2D" uid="uid://b8to4payuoogx" path="res://Sprites/Lift_Base.png" id="2_kwjsa"]
+[ext_resource type="Texture2D" uid="uid://cfp5ak5dtls45" path="res://Sprites/Lift_Plat.png" id="3_q3ob6"]
+
+[node name="Lift" type="Area2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_81y2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 17)
+texture = ExtResource("2_kwjsa")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+texture = ExtResource("3_q3ob6")

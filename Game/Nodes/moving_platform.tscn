@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://7qutcvm1r0if"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="1_fm322"]
+[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="2_6af8o"]
+[ext_resource type="Texture2D" uid="uid://b6twvjau1578q" path="res://Sprites/MovingPlatform.png" id="2_rdno7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4c0f"]
+radius = 4.0
+height = 64.0
+
+[node name="MovingPlatform" type="StaticBody2D"]
+scale = Vector2(2, 2)
+physics_material_override = ExtResource("1_fm322")
+script = ExtResource("2_6af8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rdno7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_l4c0f")

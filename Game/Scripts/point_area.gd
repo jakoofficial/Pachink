@@ -5,6 +5,7 @@ extends Area2D
 @export_group("Effect")
 ##Particle color (White as standard)
 @export var effect_color: Color = Color.WHITE
+@export var rainbow:bool = false
 ##Particle lifespan
 @export var effect_life: float = 1
 @export var effect_amount: int = 15
@@ -15,7 +16,14 @@ extends Area2D
 
 func _ready() -> void:
 	points_text.text = str(points)
-	effect.modulate = effect_color
+	if rainbow:
+		effect.modulate = Color.DARK_GRAY
+		effect.hue_variation_min = 1
+		effect.hue_variation_max = 1
+	else:
+		effect.modulate = effect_color
+		effect.hue_variation_min = 0
+		effect.hue_variation_max = 0
 	effect.lifetime = effect_life
 	effect.amount = effect_amount
 
@@ -25,4 +33,5 @@ func _on_body_entered(body: Node2D) -> void:
 		Manager.canSpawn = true
 		effect.emitting = true
 		if Manager.balls_left <= 0:
+			await get_tree().create_timer(.6).timeout
 			Manager.gameOver = true

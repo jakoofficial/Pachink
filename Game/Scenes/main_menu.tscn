@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=12 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
 [ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="2_4matt"]
+[ext_resource type="Texture2D" uid="uid://4452wvjvehuq" path="res://Logo.png" id="2_wa3s2"]
+[ext_resource type="Script" path="res://Scripts/game_settings.gd" id="3_4564u"]
+[ext_resource type="PackedScene" uid="uid://c22x5jvpt4uec" path="res://Nodes/confirm_box.tscn" id="3_qs0y1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyhud"]
 bg_color = Color(0.141172, 0.206835, 0.354204, 1)
@@ -70,6 +73,21 @@ text = "Version"
 label_settings = SubResource("LabelSettings_mumsv")
 vertical_alignment = 1
 
+[node name="Author" type="Label" parent="CanvasLayer/Menu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_okrh3")
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Menu"]
 layout_mode = 1
 anchors_preset = 8
@@ -85,36 +103,63 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Play" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Settings")
 text = "Play"
 
 [node name="Settings" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Quit")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="CanvasLayer/Menu/VBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Play")
 text = "Quit"
 
-[node name="Author" type="Label" parent="CanvasLayer/Menu"]
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Menu"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -72.0
+offset_right = -32.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+underline = 2
+uri = "https://pumpkin-dev.itch.io/"
+metadata/_edit_group_ = true
+
+[node name="Logo" type="TextureRect" parent="CanvasLayer/Menu/LinkButton"]
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -71.0
-offset_top = 184.0
-offset_right = 71.0
-offset_bottom = 207.0
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
-text = "Jacob Ø. Andersen"
-label_settings = SubResource("LabelSettings_okrh3")
-horizontal_alignment = 1
+grow_vertical = 2
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(250, 250)
+texture = ExtResource("2_wa3s2")
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
 visible = false
@@ -157,11 +202,16 @@ layout_mode = 2
 text = "Fullscreen"
 
 [node name="CheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../Back")
 flat = true
 
 [node name="Back" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../HBoxContainer/CheckBox")
+focus_neighbor_bottom = NodePath("../HBoxContainer/CheckBox")
 text = "Back"
 
 [node name="BoardSelect" type="Control" parent="CanvasLayer"]
@@ -200,13 +250,105 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer"]
 layout_mode = 2
 
-[node name="BoardSelectBack" type="Button" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
+[node name="TopMenu" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="GameSettingsBtn" type="Button" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../BoardSelectBack")
+focus_neighbor_right = NodePath("../BoardSelectBack")
+text = "Game settings"
+
+[node name="BoardSelectBack" type="Button" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu"]
 layout_mode = 2
 size_flags_horizontal = 8
+focus_neighbor_left = NodePath("../GameSettingsBtn")
+focus_neighbor_right = NodePath("../GameSettingsBtn")
 text = "Cancel"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="GameSettings" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_4564u")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/GameSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameSettings/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BallCountSlider" type="HSlider" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(125, 30)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../TopMenu/GameSettings_Back2")
+focus_neighbor_bottom = NodePath("../../TopMenu/SaveGameSettings_Btn")
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+tick_count = 1
+ticks_on_borders = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="BallsLabel" type="Label" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Balls x10"
+horizontal_alignment = 1
+
+[node name="TopMenu" type="HBoxContainer" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SaveGameSettings_Btn" type="Button" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/TopMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../GameSettings_Back2")
+focus_neighbor_top = NodePath("../../HBoxContainer/BallCountSlider")
+focus_neighbor_right = NodePath("../GameSettings_Back2")
+focus_neighbor_bottom = NodePath("../GameSettings_Back2")
+text = "Save changes"
+
+[node name="GameSettings_Back2" type="Button" parent="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/TopMenu"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../SaveGameSettings_Btn")
+focus_neighbor_top = NodePath("../../HBoxContainer/BallCountSlider")
+focus_neighbor_right = NodePath("../SaveGameSettings_Btn")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/BallCountSlider")
+text = "Back"
+
+[node name="ConfirmBox" parent="CanvasLayer/GameSettings" instance=ExtResource("3_qs0y1")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource("2_4matt")]
 anchors_preset = 0
@@ -219,6 +361,13 @@ animation = "Fade"
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_exited"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
-[connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/BoardSelectBack" to="." method="_on_board_select_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/GameSettingsBtn" to="." method="_on_game_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/BoardSelectBack" to="." method="_on_board_select_back_pressed"]
+[connection signal="value_changed" from="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/HBoxContainer/BallCountSlider" to="CanvasLayer/GameSettings" method="_on_ball_count_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/TopMenu/SaveGameSettings_Btn" to="." method="_on_save_game_settings_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/TopMenu/GameSettings_Back2" to="." method="_on_game_settings_back_pressed"]
+[connection signal="Confirm" from="CanvasLayer/GameSettings/ConfirmBox" to="." method="_on_confirm_box_confirm"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4t0orpfbp03g"]
+
+[ext_resource type="Texture2D" uid="uid://dad4gxoa1apxa" path="res://Sprites/Flipper.png" id="1_7xxk7"]
+[ext_resource type="Script" path="res://Scripts/flipper.gd" id="1_f2bra"]
+[ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="1_utunj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_efklc"]
+height = 96.0
+
+[node name="Flipper" type="StaticBody2D"]
+physics_material_override = ExtResource("1_utunj")
+script = ExtResource("1_f2bra")
+
+[node name="Flipper" type="Sprite2D" parent="."]
+position = Vector2(38, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("1_7xxk7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(38, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_efklc")

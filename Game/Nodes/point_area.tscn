@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gc7mtqfom5tm"]
+[gd_scene load_steps=6 format=3 uid="uid://gc7mtqfom5tm"]
 
 [ext_resource type="Script" path="res://Scripts/point_area.gd" id="1_ghksd"]
 [ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="2_kpdrn"]
@@ -8,6 +8,11 @@ size = Vector2(128, 20)
 
 [sub_resource type="Curve" id="Curve_e7e03"]
 _data = [Vector2(0, 0.21978), 0.0, 0.0, 0, 0, Vector2(0.719101, 0.131868), -0.611264, -0.611264, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_33l8a"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.522472, 0.208791), -2.60806, -2.60806, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="PointArea" type="Area2D"]
@@ -47,5 +52,8 @@ spread = 6.82
 initial_velocity_min = 300.0
 initial_velocity_max = 700.0
 scale_amount_curve = SubResource("Curve_e7e03")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_33l8a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=20 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
+[ext_resource type="Texture2D" uid="uid://bupil0svn52s6" path="res://Sprites/Confetti.png" id="2_gqydx"]
+[ext_resource type="Script" path="res://Scripts/stars_collected.gd" id="3_k5yk0"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i7vso"]
 
@@ -40,6 +42,16 @@ font_size = 28
 [sub_resource type="LabelSettings" id="LabelSettings_celk7"]
 font_size = 20
 
+[sub_resource type="Curve" id="Curve_uogly"]
+_data = [Vector2(0, 1), 0.0, 1.95604, 0, 0, Vector2(1, 0), 1.76675, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lq7rx"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lxi36"]
+
 [sub_resource type="Animation" id="Animation_rcpn2"]
 resource_name = "GameOver"
 tracks/0/type = "bezier"
@@ -74,6 +86,34 @@ tracks/2/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.733333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_end_effect"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOver/Background/StarsCollected")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.933333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"gameEndCollectionShow"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pgj2m"]
@@ -244,6 +284,10 @@ alignment = 1
 layout_mode = 2
 text = "Continue"
 
+[node name="PauseRestartButton3" type="Button" parent="PauseMenu/CenterContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
 [node name="PauseMenuButton" type="Button" parent="PauseMenu/CenterContainer/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Back to menu"
@@ -344,11 +388,82 @@ dragger_visibility = 1
 
 [node name="AgainButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../MainmenuButton")
+focus_neighbor_right = NodePath("../MainmenuButton")
 text = "Play again"
 
 [node name="MainmenuButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
 layout_mode = 2
+focus_neighbor_left = NodePath("../AgainButton")
+focus_neighbor_right = NodePath("../AgainButton")
 text = "Main menu"
+
+[node name="EndEffect_Left" type="CPUParticles2D" parent="GameOver/Background"]
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_gqydx")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(-0.25, -1)
+gravity = Vector2(0, 600)
+initial_velocity_min = 232.33
+initial_velocity_max = 464.65
+angular_velocity_min = 43.64
+angular_velocity_max = 421.82
+angle_max = 304.2
+scale_amount_curve = SubResource("Curve_uogly")
+color = Color(1, 0, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_lq7rx")
+
+[node name="EndEffect_Right" type="CPUParticles2D" parent="GameOver/Background"]
+position = Vector2(300, 0)
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_gqydx")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 1)
+direction = Vector2(0.25, -1)
+gravity = Vector2(0, 600)
+initial_velocity_min = 232.33
+initial_velocity_max = 464.65
+angular_velocity_min = 43.64
+angular_velocity_max = 421.82
+angle_max = 304.2
+scale_amount_curve = SubResource("Curve_uogly")
+color = Color(1, 0, 0, 1)
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_lq7rx")
+
+[node name="StarsCollected" type="Node2D" parent="GameOver/Background"]
+z_index = 1
+position = Vector2(150, -24)
+script = ExtResource("3_k5yk0")
+
+[node name="1stars" type="Sprite2D" parent="GameOver/Background/StarsCollected"]
+position = Vector2(-60, -5)
+rotation = -0.261799
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_lxi36")
+
+[node name="2stars" type="Sprite2D" parent="GameOver/Background/StarsCollected"]
+position = Vector2(0, -16)
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_lxi36")
+
+[node name="3stars" type="Sprite2D" parent="GameOver/Background/StarsCollected"]
+position = Vector2(60, -5)
+rotation = 0.261799
+scale = Vector2(3, 3)
+texture = SubResource("CompressedTexture2D_lxi36")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -356,8 +471,10 @@ libraries = {
 }
 
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2" to="." method="_on_pause_back_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseRestartButton3" to="." method="_on_pause_restart_button_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton" to="." method="_on_pause_menu_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="button_up" from="ClickableArea" to="." method="_on_clickable_area_button_up"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/AgainButton" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/MainmenuButton" to="." method="_on_mainmenu_button_pressed"]
+[connection signal="finished" from="GameOver/Background/EndEffect_Right" to="." method="_on_end_effect_finished"]

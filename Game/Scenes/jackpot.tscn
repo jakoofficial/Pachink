@@ -1,0 +1,245 @@
+[gd_scene load_steps=17 format=4 uid="uid://bpnmh3iwsj5jq"]
+
+[ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="1_egdu5"]
+[ext_resource type="TileSet" uid="uid://oquwxhmnr2er" path="res://Tilesets/BG.tres" id="2_h3s38"]
+[ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="2_po37h"]
+[ext_resource type="Texture2D" uid="uid://oply4sw7j603" path="res://Tilesets/Tiles.png" id="3_fpl4y"]
+[ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="4_t5uig"]
+[ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="5_480le"]
+[ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="5_t65qd"]
+[ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="6_gk35b"]
+[ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="7_mk68s"]
+[ext_resource type="PackedScene" uid="uid://c4t0orpfbp03g" path="res://Nodes/flipper.tscn" id="9_j00fs"]
+[ext_resource type="PackedScene" uid="uid://klprm2ojuh4l" path="res://Nodes/Spinner.tscn" id="10_k12u6"]
+[ext_resource type="PackedScene" uid="uid://7qutcvm1r0if" path="res://Nodes/moving_platform.tscn" id="12_jbw0e"]
+[ext_resource type="PackedScene" uid="uid://chhao10wyugcb" path="res://Nodes/collectable.tscn" id="13_gt5jf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x76gq"]
+texture = ExtResource("3_fpl4y")
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 5, -4, 7, 0, 8, 2.52574, 7.36857, 4, 7, 5, 5, 5, -8, -5, -8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, 8, 5, 8, 5, -8, -5, -8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5, -5, -4, -7, 0, -8, 2.52574, -7.36857, 4, -7, 5, -5, 5, 8, -5, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 0, -3, 4, -4, 5, -6, 5, -8, -5, -8, -5, -6)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 5, 5, 8, -5, 8, -5, 5, 8, -8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -2, 6, -1, 7, 0, 8, 2, 8, 6, 6, 8, -8, 8, 0, -1)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(5, -8, -8, 5, -8, -8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 4, 0, 3, 4, 4, 5, 6, 5, 8, -5, 8, -5, 6)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, 7, -6, 5, -7, 1, 2, -8, 8, -8, 8, -1, -1, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 8, -8, 8, -8, 2, 2, -8, 5, -7, 7, -5, 8, -1)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1, -8, -8, -1, -8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 2, 8, 8, 2, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 2, 2, -8, 8, -8, 8, -1, -1, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -5, 2, -8, 8, -8, 8, -1, 5, 2, 2, 1, 0, -1)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -2, -1, -1, 1, 1, 2, 3, 1, 6, -1, 8, -8, 8, -8, 2, -6, -1)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 4, 6, 0, 1, -5, -3, -7, -8, -8, -8, -1, -5, 0, 0, 5, 2, 8, 6, 8, 7, 7)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, -6, 0, -1, -5, 3, -7, 8, -8, 8, -1, 5, 0, 0, 5, -2, 8, -6, 8, -7, 7)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -7, 2, -5, 5, -2, 7, 2, 8, 8, 1, 8, 0, 5, -2, 2, -5, 0, -8, -1, -8, -8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7, 2, -5, -2, -2, -5, 2, -7, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(7, -7, 3, -8, 0, -7, -2, -4, -2, 2, 6, 2, 8, 0, 8, -4)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(7, -1, 4, -2, 1, -1, -2, 2, -2, 8, 6, 8, 8, 6, 8, 2)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0, -6, -2, 2, -2, 2, 5, -1, 8, -4, 8, -7, 7, -8, 4)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -6, 8, -8, -8, -8, -8, -6)
+0:4/size_in_atlas = Vector2i(2, 2)
+0:4/0 = 0
+2:4/size_in_atlas = Vector2i(2, 2)
+2:4/0 = 0
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, -6, -6, 8, -8, 8, -8, 6, 6, -8)
+
+[sub_resource type="TileSet" id="TileSet_kwmxd"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = ExtResource("2_po37h")
+sources/0 = SubResource("TileSetAtlasSource_x76gq")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pde47"]
+font_size = 10
+font_color = Color(0.666569, 0.666569, 0.666569, 1)
+
+[node name="Board" type="Node2D"]
+
+[node name="Indicator" parent="." instance=ExtResource("1_egdu5")]
+position = Vector2(400, 20)
+move_speed = 2.5
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="BG" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 1, 1, 0.827451)
+scale = Vector2(2, 2)
+tile_set = ExtResource("2_h3s38")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAYAAkAAAADAAIAAFAAAAMAAAAFAAAAABAYAAMAAAAFAAAAAAAXAAMAAAADAAAAAAAYAAQAAAAEAAEAAAAXAAQAAAAFAAEAAAABAAQAAAAFAAEAABABAAMAAAADAAAAABAAAAQAAAAEAAEAABAEAAMAAAAAAAAAAAAEAAQAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAcAAAABAAEAADADAAcAAAACAAAAAGAEAAoAAAADAAAAAFAEAAsAAAAEAAAAAFADAAoAAAADAAEAAFADAAsAAAAEAAEAAFAUAAMAAAAAAAAAAAAUAAQAAAAAAAEAAAAUAAUAAAAAAAEAAAAUAAYAAAAAAAEAAAAUAAcAAAABAAEAACAVAAcAAAACAAAAAHAVAAsAAAAEAAEAAAAUAAsAAAADAAEAAAAUAAoAAAADAAAAAAAVAAoAAAAEAAAAAAAFAAgAAAADAAAAAAAGAAkAAAAEAAEAAAAFAAkAAAADAAAAACAGAAgAAAAEAAEAACASAAkAAAADAAAAACATAAgAAAAEAAEAACATAAkAAAAEAAEAAAASAAgAAAADAAAAAAAFAA4AAAAEAAEAAAAEAA0AAAADAAAAAAAEAA4AAAADAAAAACAFAA0AAAAEAAEAACATAA4AAAADAAAAACAUAA0AAAAEAAEAACAUAA4AAAAEAAEAAAATAA0AAAADAAAAAAAPAAgAAAADAAAAABAOAAgAAAAEAAAAABAPAAkAAAADAAEAABAOAAkAAAAEAAEAABAKAAgAAAAEAAAAAAAJAAgAAAADAAAAAAAKAAkAAAAEAAEAAAAJAAkAAAADAAEAAAAPAAMAAAADAAAAABAOAAMAAAAEAAAAABAPAAQAAAADAAEAABAOAAQAAAAEAAEAABAKAAMAAAAEAAAAAAAJAAMAAAADAAAAAAAKAAQAAAAEAAEAAAAJAAQAAAADAAEAAAA=")
+tile_set = SubResource("TileSet_kwmxd")
+
+[node name="Pins" type="Node2D" parent="."]
+
+[node name="Pin" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(400, 152)
+
+[node name="Pin2" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(400, 300)
+
+[node name="Pin3" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(400, 415)
+
+[node name="Pin4" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(530, 230)
+
+[node name="Pin5" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(530, 380)
+
+[node name="Pin6" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(270, 230)
+
+[node name="Pin7" parent="Pins" instance=ExtResource("5_480le")]
+position = Vector2(270, 380)
+
+[node name="Barriers" type="Node2D" parent="."]
+position = Vector2(0, 40)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PointBarrier" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(0, 300)
+scale = Vector2(2, 10)
+
+[node name="PointBarrier2" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(160, 600)
+
+[node name="PointBarrier3" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(320, 600)
+
+[node name="PointBarrier4" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(480, 600)
+
+[node name="PointBarrier5" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(640, 600)
+
+[node name="PointBarrier6" parent="Barriers" instance=ExtResource("4_t5uig")]
+position = Vector2(800, 300)
+scale = Vector2(2, 10)
+
+[node name="ScoreArea" type="Node2D" parent="."]
+
+[node name="PointArea" parent="ScoreArea" instance=ExtResource("5_t65qd")]
+position = Vector2(80, 608)
+effect_color = Color(0.407843, 0.403922, 0.407843, 1)
+effect_life = 0.5
+effect_amount = 10
+
+[node name="PointArea2" parent="ScoreArea" instance=ExtResource("5_t65qd")]
+position = Vector2(240, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea3" parent="ScoreArea" instance=ExtResource("5_t65qd")]
+position = Vector2(400, 608)
+points = 50
+effect_color = Color(0, 0.764052, 0, 1)
+rainbow = true
+effect_life = 1.5
+effect_amount = 25
+
+[node name="PointArea4" parent="ScoreArea" instance=ExtResource("5_t65qd")]
+position = Vector2(560, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea5" parent="ScoreArea" instance=ExtResource("5_t65qd")]
+position = Vector2(720, 608)
+effect_color = Color(0.407843, 0.403922, 0.407843, 1)
+effect_life = 0.5
+effect_amount = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("6_gk35b")]
+metadata/_edit_lock_ = true
+
+[node name="Credit" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 72.0
+offset_right = -18.0
+offset_bottom = 95.0
+grow_horizontal = 0
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_pde47")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("7_mk68s")]
+top_level = true
+z_index = 20
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+animation = "Fade"
+
+[node name="Spinner" parent="." instance=ExtResource("10_k12u6")]
+position = Vector2(80, 450)
+
+[node name="Spinner2" parent="." instance=ExtResource("10_k12u6")]
+position = Vector2(720, 450)
+
+[node name="Flipper" parent="." instance=ExtResource("9_j00fs")]
+position = Vector2(146, 136)
+start_rotation = -25.0
+degrees = -60.0
+
+[node name="Flipper2" parent="." instance=ExtResource("9_j00fs")]
+position = Vector2(654, 136)
+flip = true
+degrees = 60.0
+
+[node name="MovingPlatform" parent="." instance=ExtResource("12_jbw0e")]
+position = Vector2(400, 510)
+move_speed = 4.0
+
+[node name="Spinner3" parent="." instance=ExtResource("10_k12u6")]
+position = Vector2(564, 450)
+
+[node name="Spinner4" parent="." instance=ExtResource("10_k12u6")]
+position = Vector2(234, 450)
+
+[node name="Stars" type="Node2D" parent="."]
+position = Vector2(0, 42)
+
+[node name="Collectable" parent="Stars" instance=ExtResource("13_gt5jf")]
+position = Vector2(151, 248)
+
+[node name="Collectable2" parent="Stars" instance=ExtResource("13_gt5jf")]
+position = Vector2(400, 316)
+
+[node name="Collectable3" parent="Stars" instance=ExtResource("13_gt5jf")]
+position = Vector2(652, 245)

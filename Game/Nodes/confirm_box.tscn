@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://c22x5jvpt4uec"]
+
+[ext_resource type="Script" path="res://Scripts/confirm_box.gd" id="1_d0mlp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2n8d1"]
+bg_color = Color(0.351563, 0.351563, 0.351563, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6o58b"]
+font_size = 22
+
+[node name="ConfirmBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+script = ExtResource("1_d0mlp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+pivot_offset = Vector2(150, 75)
+theme_override_styles/panel = SubResource("StyleBoxFlat_2n8d1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -67.5
+offset_top = -46.0
+offset_right = 67.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Confirm_Btn" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Confirm"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+dragger_visibility = 2
+
+[node name="Cancel_Btn" type="Button" parent="Panel/HBoxContainer"]
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 16.0
+offset_right = 124.0
+offset_bottom = 75.0
+grow_horizontal = 2
+text = "Changes have been made.
+Is this okay?"
+label_settings = SubResource("LabelSettings_6o58b")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Panel/HBoxContainer/Confirm_Btn" to="." method="_on_confirm_btn_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Cancel_Btn" to="." method="_on_cancel_btn_pressed"]

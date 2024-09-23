@@ -1,0 +1,114 @@
+[gd_scene load_steps=9 format=3 uid="uid://cytxevtivii2c"]
+
+[ext_resource type="Script" path="res://Scripts/piston.gd" id="1_60t4s"]
+[ext_resource type="Texture2D" uid="uid://ka50k538kpeq" path="res://Sprites/Engine_piece_1.png" id="1_ygvbo"]
+[ext_resource type="Texture2D" uid="uid://chty4upfqmne4" path="res://Sprites/Engine_piece_2.png" id="2_yvjm7"]
+[ext_resource type="Texture2D" uid="uid://b31kr50wsdy8" path="res://Sprites/Engine_piece_3.png" id="3_338d3"]
+[ext_resource type="PhysicsMaterial" uid="uid://cihjutjahu8rv" path="res://mats/bounce.tres" id="4_16jh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xkv7"]
+size = Vector2(26, 25.262)
+
+[sub_resource type="Animation" id="Animation_ossp5"]
+resource_name = "running"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkeletonContainer/Parts/Base:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.74846e-07, -0.20944, -6.07375]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SkeletonContainer/Parts/Rod:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 0.9, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0401426, 0.226893, 0.226893, 0.0, -0.226893, -0.226893, -0.190241, -0.0872665, -0.0401426]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkeletonContainer/Parts/Rod:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 0.9, 0.933333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-7.0573e-06, -13), Vector2(-2, -12.5), Vector2(-11, -6), Vector2(-11, 6), Vector2(0, 12), Vector2(11, 6), Vector2(11, -6), Vector2(9.275, -7.988), Vector2(6.9, -9.872), Vector2(4.325, -11.446), Vector2(2, -12.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkeletonContainer/Parts/Head:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1.69597e-05, -65), Vector2(1.69597e-05, -63.2), Vector2(1.69597e-05, -56), Vector2(1.69597e-05, -45), Vector2(1.69597e-05, -40), Vector2(1.69597e-05, -45), Vector2(1.69597e-05, -56), Vector2(1.69597e-05, -63.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SkeletonContainer/Parts/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1v6xq"]
+_data = {
+"running": SubResource("Animation_ossp5")
+}
+
+[node name="Piston" type="Area2D"]
+script = ExtResource("1_60t4s")
+
+[node name="SkeletonContainer" type="Node2D" parent="."]
+
+[node name="Parts" type="Node2D" parent="SkeletonContainer"]
+
+[node name="Base" type="Sprite2D" parent="SkeletonContainer/Parts"]
+rotation = -6.05991
+scale = Vector2(0.999998, 0.999998)
+texture = ExtResource("1_ygvbo")
+
+[node name="Rod" type="Sprite2D" parent="SkeletonContainer/Parts"]
+position = Vector2(2.1591, -12.4279)
+rotation = -0.0433673
+texture = ExtResource("2_yvjm7")
+offset = Vector2(0, -22)
+
+[node name="Head" type="Sprite2D" parent="SkeletonContainer/Parts"]
+position = Vector2(1.69597e-05, -63.1015)
+texture = ExtResource("3_338d3")
+offset = Vector2(0, -6)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SkeletonContainer/Parts/Head"]
+position = Vector2(0, -6)
+physics_material_override = ExtResource("4_16jh7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SkeletonContainer/Parts/Head/StaticBody2D"]
+shape = SubResource("RectangleShape2D_0xkv7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1v6xq")
+}

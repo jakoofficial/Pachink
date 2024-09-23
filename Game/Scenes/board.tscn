@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://biyv1i7n0r816"]
+[gd_scene load_steps=9 format=3 uid="uid://biyv1i7n0r816"]
 
 [ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="1_dh0si"]
 [ext_resource type="PackedScene" uid="uid://ciarpbfyr7cej" path="res://Nodes/pin.tscn" id="3_ljybg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="4_jnwh5"]
 [ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="5_plc3f"]
 [ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="6_lu0hl"]
+[ext_resource type="PackedScene" uid="uid://chhao10wyugcb" path="res://Nodes/collectable.tscn" id="7_pmgxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_50btl"]
 font_size = 10
@@ -134,8 +135,9 @@ position = Vector2(752, 328)
 
 [node name="PointArea" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(80, 608)
-effect_color = Color(0, 0.591563, 0.740791, 1)
+effect_color = Color(0.406342, 0.403315, 0.40782, 1)
 effect_life = 0.5
+effect_amount = 10
 
 [node name="PointArea2" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(240, 608)
@@ -146,7 +148,9 @@ effect_color = Color(0, 0, 1, 1)
 position = Vector2(400, 608)
 points = 50
 effect_color = Color(0, 0.764052, 0, 1)
+rainbow = true
 effect_life = 1.5
+effect_amount = 25
 
 [node name="PointArea4" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(560, 608)
@@ -155,8 +159,9 @@ effect_color = Color(0, 0, 1, 1)
 
 [node name="PointArea5" parent="ScoreArea" instance=ExtResource("5_plc3f")]
 position = Vector2(720, 608)
-effect_color = Color(1, 0, 0, 1)
+effect_color = Color(0.407843, 0.403922, 0.407843, 1)
 effect_life = 0.5
+effect_amount = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -187,3 +192,14 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 animation = "Fade"
+
+[node name="Stars" type="Node2D" parent="."]
+
+[node name="Collectable" parent="Stars" instance=ExtResource("7_pmgxb")]
+position = Vector2(74, 400)
+
+[node name="Collectable2" parent="Stars" instance=ExtResource("7_pmgxb")]
+position = Vector2(400, 320)
+
+[node name="Collectable3" parent="Stars" instance=ExtResource("7_pmgxb")]
+position = Vector2(720, 400)

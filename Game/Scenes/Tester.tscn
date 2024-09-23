@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://mjmna5165xsm"]
+
+[ext_resource type="PackedScene" uid="uid://d1k58arikvty8" path="res://Nodes/indicator.tscn" id="1_08qci"]
+[ext_resource type="PackedScene" uid="uid://b7i7o2yydbqrr" path="res://Nodes/point_barrier.tscn" id="2_k5yk0"]
+[ext_resource type="PackedScene" uid="uid://gc7mtqfom5tm" path="res://Nodes/point_area.tscn" id="4_hdt46"]
+[ext_resource type="PackedScene" uid="uid://bk86wlashke5x" path="res://Nodes/gui.tscn" id="5_6dyho"]
+[ext_resource type="PackedScene" uid="uid://chhao10wyugcb" path="res://Nodes/collectable.tscn" id="6_ggqyi"]
+[ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="6_q3hpj"]
+[ext_resource type="PackedScene" uid="uid://bt0lobg0qveg8" path="res://Nodes/spinnies.tscn" id="7_k785w"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_50btl"]
+font_size = 10
+font_color = Color(0.666569, 0.666569, 0.666569, 1)
+
+[node name="Board" type="Node2D"]
+
+[node name="Indicator" parent="." instance=ExtResource("1_08qci")]
+position = Vector2(400, 20)
+move_speed = 2.5
+
+[node name="Balls" type="Node2D" parent="."]
+
+[node name="Barriers" type="Node2D" parent="."]
+position = Vector2(0, 40)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PointBarrier" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(0, 300)
+scale = Vector2(2, 10)
+
+[node name="PointBarrier2" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(160, 600)
+
+[node name="PointBarrier3" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(320, 600)
+
+[node name="PointBarrier4" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(480, 600)
+
+[node name="PointBarrier5" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(640, 600)
+
+[node name="PointBarrier6" parent="Barriers" instance=ExtResource("2_k5yk0")]
+position = Vector2(800, 300)
+scale = Vector2(2, 10)
+
+[node name="ScoreArea" type="Node2D" parent="."]
+
+[node name="PointArea" parent="ScoreArea" instance=ExtResource("4_hdt46")]
+position = Vector2(80, 608)
+effect_color = Color(0.406342, 0.403315, 0.40782, 1)
+effect_life = 0.5
+effect_amount = 10
+
+[node name="PointArea2" parent="ScoreArea" instance=ExtResource("4_hdt46")]
+position = Vector2(240, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea3" parent="ScoreArea" instance=ExtResource("4_hdt46")]
+position = Vector2(400, 608)
+points = 50
+effect_color = Color(0, 0.764052, 0, 1)
+rainbow = true
+effect_life = 1.5
+effect_amount = 25
+
+[node name="PointArea4" parent="ScoreArea" instance=ExtResource("4_hdt46")]
+position = Vector2(560, 608)
+points = 30
+effect_color = Color(0, 0, 1, 1)
+
+[node name="PointArea5" parent="ScoreArea" instance=ExtResource("4_hdt46")]
+position = Vector2(720, 608)
+effect_color = Color(0.407843, 0.403922, 0.407843, 1)
+effect_life = 0.5
+effect_amount = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource("5_6dyho")]
+metadata/_edit_lock_ = true
+
+[node name="Credit" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 72.0
+offset_right = -18.0
+offset_bottom = 95.0
+grow_horizontal = 0
+text = "Jacob Ø. Andersen"
+label_settings = SubResource("LabelSettings_50btl")
+horizontal_alignment = 2
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("6_q3hpj")]
+top_level = true
+z_index = 20
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+animation = "Fade"
+
+[node name="Collectable" parent="." instance=ExtResource("6_ggqyi")]
+position = Vector2(394, 382)
+
+[node name="Collectable2" parent="." instance=ExtResource("6_ggqyi")]
+position = Vector2(261, 370)
+
+[node name="Collectable3" parent="." instance=ExtResource("6_ggqyi")]
+position = Vector2(528, 357)
+
+[node name="Spinnies" parent="." instance=ExtResource("7_k785w")]
+position = Vector2(400, 473)
