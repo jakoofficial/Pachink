@@ -18,7 +18,6 @@ var viewport_size = Vector2(0, 0)
 func _ready() -> void:
 	viewport_size = get_viewport().content_scale_size
 	print(viewport_size)
-	GUI.clickArea.connect(drop_ball)
 	%PowerBar.visible = false
 
 func drop_ball():
@@ -54,6 +53,8 @@ func drop_ball():
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("drop_ball"):
+		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			if not Manager.mouseOverSpawn: return
 		dropPower = lerpf(minPower, maxPower, heldPower)
 		drop_ball()
 		heldPower = 0
@@ -61,6 +62,8 @@ func _process(delta: float) -> void:
 		%PowerBar.visible = false
 		
 	if Input.is_action_pressed("drop_ball"):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			if not Manager.mouseOverSpawn: return
 		%PowerBar.visible = true
 		if heldPower > 1 or heldPower < 0:
 			powerOverTime = -powerOverTime

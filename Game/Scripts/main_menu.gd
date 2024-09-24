@@ -18,13 +18,15 @@ var mouse_over:bool = false
 func _ready():
 	version_label.text = str(Manager.version)
 	%BallSpamCheckBox.button_pressed = Manager.allowBallSpam
+	%CafeMode.button_pressed = Manager.cafeMode
 	transition.black_screen()
 	await get_tree().create_timer(0.25).timeout
 	transition.play_anim_backwards()
 	await get_tree().create_timer(1).timeout
 	transition.reset()
 	board_select_setup()
-	%Play.grab_focus()
+	#%Play.grab_focus()
+	%CafeMode.grab_focus()
 
 func board_select_setup():
 	var boardButtons = []
@@ -134,3 +136,18 @@ func set_changes():
 
 func _on_ball_spam_check_box_toggled(toggled_on: bool) -> void:
 	Manager.allowBallSpam = toggled_on
+
+func _on_cafe_mode_toggled(toggled_on: bool) -> void:
+	Manager.cafeMode = toggled_on
+	%SetupPrizes.visible = toggled_on
+	var backBtn:Button = $CanvasLayer/Settings/CenterContainer/VBoxContainer/Back
+	if toggled_on:
+		%CafeMode.focus_neighbor_top = %CafeMode.get_path_to(%SetupPrizes)
+		backBtn.focus_neighbor_bottom = backBtn.get_path_to(%SetupPrizes)
+	else:
+		%CafeMode.focus_neighbor_top = %CafeMode.get_path_to(backBtn)
+		backBtn.focus_neighbor_bottom = backBtn.get_path_to(%CafeMode)
+		
+func _on_setup_prizes_pressed() -> void:
+	print("asdad")
+	pass # Replace with function body.

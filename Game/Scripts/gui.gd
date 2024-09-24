@@ -13,7 +13,6 @@ extends Control
 
 var game_over_anim_done = false
 var can_emit_effect = false
-signal clickArea
 
 func _ready() -> void:
 	score_text.text = str(Manager.score)
@@ -77,7 +76,7 @@ func play_end_effect():
 func _on_pause_back_button_pressed():
 	Manager.is_paused = false
 func _on_pause_button_pressed():
-	$PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton.grab_focus()
+	$GameOver/Background/HBoxContainer/HSplitContainer/AgainButton.grab_focus()
 	Manager.is_paused = true
 	
 func _on_pause_restart_button_pressed():
@@ -94,9 +93,6 @@ func _on_pause_menu_button_pressed():
 	Manager.is_paused = false
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-
-func _on_clickable_area_button_up():
-	emit_signal("clickArea")
 
 # GameOver
 func _on_mainmenu_button_pressed():
@@ -125,3 +121,9 @@ func _on_again_button_pressed():
 
 func _on_end_effect_finished():
 	can_emit_effect = false
+
+func _on_clickable_area_mouse_entered() -> void:
+	Manager.mouseOverSpawn = true
+
+func _on_clickable_area_mouse_exited() -> void:
+	Manager.mouseOverSpawn = false

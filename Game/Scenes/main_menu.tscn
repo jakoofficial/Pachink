@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=13 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
 [ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="2_4matt"]
@@ -21,6 +21,9 @@ font_size = 12
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssq4f"]
 bg_color = Color(0.237539, 0.237539, 0.237539, 1)
 
+[sub_resource type="Theme" id="Theme_sikj5"]
+CheckButton/font_sizes/font_size = 12
+
 [sub_resource type="LabelSettings" id="LabelSettings_gtnvp"]
 font_size = 36
 
@@ -38,6 +41,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gyhud")
 
 [node name="Menu" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -162,7 +166,6 @@ pivot_offset = Vector2(250, 250)
 texture = ExtResource("2_wa3s2")
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -194,6 +197,23 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Settings/CenterContainer"]
 layout_mode = 2
 
+[node name="SetupPrizes" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../CafeMode")
+text = "Prizes"
+
+[node name="CafeMode" type="CheckButton" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../Back")
+focus_neighbor_bottom = NodePath("../HBoxContainer/FullscreenCheckBox")
+theme = SubResource("Theme_sikj5")
+text = "Friday café"
+alignment = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -208,7 +228,7 @@ layout_mode = 2
 [node name="FullscreenCheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../../Back")
+focus_neighbor_top = NodePath("../../CafeMode")
 focus_neighbor_bottom = NodePath("../../HBoxContainer2/BallSpamCheckBox")
 flat = true
 
@@ -233,7 +253,7 @@ focus_neighbor_bottom = NodePath("../../Back")
 [node name="Back" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer2/BallSpamCheckBox")
-focus_neighbor_bottom = NodePath("../HBoxContainer/FullscreenCheckBox")
+focus_neighbor_bottom = NodePath("../CafeMode")
 text = "Back"
 
 [node name="BoardSelect" type="Control" parent="CanvasLayer"]
@@ -385,6 +405,8 @@ animation = "Fade"
 [connection signal="pressed" from="CanvasLayer/Menu/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Menu/LinkButton/Logo" to="." method="_on_logo_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/SetupPrizes" to="." method="_on_setup_prizes_pressed"]
+[connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/CafeMode" to="." method="_on_cafe_mode_toggled"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/FullscreenCheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2/BallSpamCheckBox" to="." method="_on_ball_spam_check_box_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]

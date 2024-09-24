@@ -22,6 +22,8 @@ var collectedStarsCurLevel: int = 0
 var ballsInGame: Array = []
 var allowBallSpam: bool = false
 var ballLocation: Vector2
+var cafeMode: bool = false
+var mouseOverSpawn: bool = false
 
 func _ready():
 	balls_left = ball_count

@@ -241,6 +241,7 @@ text = "Balls: 0"
 vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -496,7 +497,8 @@ texture = ExtResource("5_1yoko")
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseRestartButton3" to="." method="_on_pause_restart_button_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton" to="." method="_on_mainmenu_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="button_up" from="ClickableArea" to="." method="_on_clickable_area_button_up"]
+[connection signal="mouse_entered" from="ClickableArea" to="." method="_on_clickable_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickableArea" to="." method="_on_clickable_area_mouse_exited"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/AgainButton" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/MainmenuButton" to="." method="_on_mainmenu_button_pressed"]
 [connection signal="finished" from="GameOver/Background/EndEffect_Right" to="." method="_on_end_effect_finished"]
