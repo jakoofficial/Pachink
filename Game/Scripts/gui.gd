@@ -19,10 +19,22 @@ func _ready() -> void:
 	score_text.text = str(Manager.score)
 	balls_left_text.text = str(Manager.balls_left)
 	game_over.visible = false
+	%BallLocator.visible = false
+
 
 func _process(delta: float) -> void:
 	score_text.text = "Score: " + str(Manager.score)
 	balls_left_text.text = "Balls: "+str(Manager.balls_left)
+	%BallLocator.position.x = Manager.ballLocation.x
+	
+	if Input.is_action_pressed("quit") and !Manager.gameOver:
+		$PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2.grab_focus()
+		Manager.is_paused = true
+	
+	if Manager.ballLocation.y < 0:
+		%BallLocator.visible = true
+	else:
+		%BallLocator.visible = false
 	
 	if Manager.gameOver:
 		var starParentNode = $"../../Stars"
@@ -65,6 +77,7 @@ func play_end_effect():
 func _on_pause_back_button_pressed():
 	Manager.is_paused = false
 func _on_pause_button_pressed():
+	$PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton.grab_focus()
 	Manager.is_paused = true
 	
 func _on_pause_restart_button_pressed():

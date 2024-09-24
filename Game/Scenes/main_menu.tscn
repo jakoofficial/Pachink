@@ -209,7 +209,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../../Back")
-focus_neighbor_bottom = NodePath("../../Back")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/BallSpamCheckBox")
 flat = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
@@ -227,10 +227,12 @@ dragger_visibility = 1
 [node name="BallSpamCheckBox" type="CheckBox" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer/FullscreenCheckBox")
+focus_neighbor_bottom = NodePath("../../Back")
 
 [node name="Back" type="Button" parent="CanvasLayer/Settings/CenterContainer/VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../HBoxContainer/FullscreenCheckBox")
+focus_neighbor_top = NodePath("../HBoxContainer2/BallSpamCheckBox")
 focus_neighbor_bottom = NodePath("../HBoxContainer/FullscreenCheckBox")
 text = "Back"
 

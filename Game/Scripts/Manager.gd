@@ -20,7 +20,8 @@ var curBoard = boards[0][0]
 var collectedStarsTotal: int = 0
 var collectedStarsCurLevel: int = 0
 var ballsInGame: Array = []
-var allowBallSpam: bool = true
+var allowBallSpam: bool = false
+var ballLocation: Vector2
 
 func _ready():
 	balls_left = ball_count
@@ -45,7 +46,5 @@ func reset():
 	canSpawn = true
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("quit") and !gameOver:
-		is_paused = true
 	if event.is_action_pressed("restart"):
 		reset()

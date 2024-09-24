@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=22 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
 [ext_resource type="Texture2D" uid="uid://bupil0svn52s6" path="res://Sprites/Confetti.png" id="2_gqydx"]
 [ext_resource type="Script" path="res://Scripts/stars_collected.gd" id="3_k5yk0"]
+[ext_resource type="Texture2D" uid="uid://gp48bao5o51v" path="res://Sprites/Indicator.png" id="4_w8avh"]
+[ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="5_1yoko"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i7vso"]
 
@@ -239,7 +241,6 @@ text = "Balls: 0"
 vertical_alignment = 1
 
 [node name="PauseMenu" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,14 +283,20 @@ alignment = 1
 
 [node name="PauseBackButton2" type="Button" parent="PauseMenu/CenterContainer/Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../PauseMenuButton")
+focus_neighbor_bottom = NodePath("../PauseRestartButton3")
 text = "Continue"
 
 [node name="PauseRestartButton3" type="Button" parent="PauseMenu/CenterContainer/Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../PauseBackButton2")
+focus_neighbor_bottom = NodePath("../PauseMenuButton")
 text = "Restart"
 
 [node name="PauseMenuButton" type="Button" parent="PauseMenu/CenterContainer/Panel/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../PauseRestartButton3")
+focus_neighbor_bottom = NodePath("../PauseBackButton2")
 text = "Back to menu"
 
 [node name="PauseButton" type="Button" parent="."]
@@ -470,9 +477,24 @@ libraries = {
 "": SubResource("AnimationLibrary_try12")
 }
 
+[node name="BallLocator" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 35)
+metadata/_edit_group_ = true
+
+[node name="ballLocatorSprite" type="Sprite2D" parent="BallLocator"]
+rotation = -3.14159
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_w8avh")
+
+[node name="BallSprite" type="Sprite2D" parent="BallLocator"]
+position = Vector2(0, 15)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_1yoko")
+
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2" to="." method="_on_pause_back_button_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseRestartButton3" to="." method="_on_pause_restart_button_pressed"]
-[connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton" to="." method="_on_pause_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseMenuButton" to="." method="_on_mainmenu_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="button_up" from="ClickableArea" to="." method="_on_clickable_area_button_up"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/AgainButton" to="." method="_on_again_button_pressed"]

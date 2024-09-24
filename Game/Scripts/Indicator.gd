@@ -31,7 +31,6 @@ func drop_ball():
 		
 		ball_inst.global_position = Vector2(spawner.global_position.x, spawner.global_position.y)
 		ball_inst.linear_velocity = Vector2.DOWN * dropPower *100
-		print("Power", dropPower)
 		
 		get_tree().root.get_node("/root/Board/Balls").add_child(ball_inst)
 		if not Manager.allowBallSpam:
@@ -62,7 +61,6 @@ func _process(delta: float) -> void:
 		%PowerBar.visible = false
 		
 	if Input.is_action_pressed("drop_ball"):
-		print(heldPower)
 		%PowerBar.visible = true
 		if heldPower > 1 or heldPower < 0:
 			powerOverTime = -powerOverTime
