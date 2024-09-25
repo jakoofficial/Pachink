@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmjkht7rropl6"]
+[gd_scene load_steps=15 format=3 uid="uid://cmjkht7rropl6"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_qoo0f"]
 [ext_resource type="PackedScene" uid="uid://cwdbh6tkjnd75" path="res://Nodes/transition.tscn" id="2_4matt"]
 [ext_resource type="Texture2D" uid="uid://4452wvjvehuq" path="res://Logo.png" id="2_wa3s2"]
 [ext_resource type="Script" path="res://Scripts/game_settings.gd" id="3_4564u"]
+[ext_resource type="Script" path="res://Scripts/cafe_mode_settings.gd" id="3_domyd"]
+[ext_resource type="Theme" uid="uid://hrjckykqfav7" path="res://Themes/Theme.tres" id="3_p3rro"]
 [ext_resource type="PackedScene" uid="uid://c22x5jvpt4uec" path="res://Nodes/confirm_box.tscn" id="3_qs0y1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyhud"]
@@ -166,6 +168,8 @@ pivot_offset = Vector2(250, 250)
 texture = ExtResource("2_wa3s2")
 
 [node name="Settings" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,6 +258,84 @@ focus_neighbor_bottom = NodePath("../../Back")
 layout_mode = 2
 focus_neighbor_top = NodePath("../HBoxContainer2/BallSpamCheckBox")
 focus_neighbor_bottom = NodePath("../CafeMode")
+text = "Back"
+
+[node name="CafeModeSettings" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_domyd")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/CafeModeSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CafeModeSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CafeModeSettings/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="PrizeAmount" type="Label" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "5/5"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="PrizeNameTextEdit" type="TextEdit" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+theme = ExtResource("3_p3rro")
+placeholder_text = "Prize"
+scroll_fit_content_height = true
+caret_multiple = false
+text_direction = 1
+
+[node name="PrizePointsAmountSpinBox" type="SpinBox" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+min_value = 50.0
+max_value = 500.0
+value = 50.0
+alignment = 1
+
+[node name="CafeModeAddPrizeBtn" type="Button" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add prize"
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PrizeList" type="VBoxContainer" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="CafeModeBackBtn" type="Button" parent="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 text = "Back"
 
 [node name="BoardSelect" type="Control" parent="CanvasLayer"]
@@ -410,6 +492,8 @@ animation = "Fade"
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer/FullscreenCheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="toggled" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/HBoxContainer2/BallSpamCheckBox" to="." method="_on_ball_spam_check_box_toggled"]
 [connection signal="pressed" from="CanvasLayer/Settings/CenterContainer/VBoxContainer/Back" to="." method="_on_settings_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/HBoxContainer/CafeModeAddPrizeBtn" to="CanvasLayer/CafeModeSettings" method="_create_prize"]
+[connection signal="pressed" from="CanvasLayer/CafeModeSettings/CenterContainer/VBoxContainer/CafeModeBackBtn" to="." method="_CafeModePrizeSettingsBack_btn"]
 [connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/GameSettingsBtn" to="." method="_on_game_settings_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/BoardSelect/CenterContainer/VBoxContainer/TopMenu/BoardSelectBack" to="." method="_on_board_select_back_pressed"]
 [connection signal="value_changed" from="CanvasLayer/GameSettings/CenterContainer/VBoxContainer/HBoxContainer/BallCountSlider" to="CanvasLayer/GameSettings" method="_on_ball_count_slider_value_changed"]

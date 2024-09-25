@@ -149,5 +149,9 @@ func _on_cafe_mode_toggled(toggled_on: bool) -> void:
 		backBtn.focus_neighbor_bottom = backBtn.get_path_to(%CafeMode)
 		
 func _on_setup_prizes_pressed() -> void:
-	print("asdad")
-	pass # Replace with function body.
+	%Settings.visible = false
+	%CafeModeSettings.visible = true
+
+func _CafeModePrizeSettingsBack_btn() -> void:
+	%Settings.visible = true
+	%CafeModeSettings.visible = false

@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwe530gjebeu0"]
+
+[ext_resource type="Script" path="res://Scripts/prize_box.gd" id="1_gv1mx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lytbn"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PrizeBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gv1mx")
+
+[node name="PrizeBox_BG" type="Panel" parent="."]
+custom_minimum_size = Vector2(300, 39)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lytbn")
+
+[node name="PointPrize" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 39.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="PointPrize"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+
+[node name="PrizeText" type="Label" parent="PointPrize"]
+custom_minimum_size = Vector2(157, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Prize text"
+text_overrun_behavior = 3
+
+[node name="PointsAmount" type="Label" parent="PointPrize"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1000"
+horizontal_alignment = 1
+text_overrun_behavior = 3
+
+[node name="RemovePrizeBtn" type="Button" parent="PointPrize"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Remove"
+
+[connection signal="pressed" from="PointPrize/RemovePrizeBtn" to="." method="_removePrize_click"]
