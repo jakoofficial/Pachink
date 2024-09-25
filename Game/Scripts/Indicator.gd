@@ -36,6 +36,7 @@ func drop_ball():
 			Manager.canSpawn = false
 		Manager.ballsInGame.append(ball_inst)
 		Manager.balls_left -= 1
+		
 	else:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
 		tween.tween_property(sprite, "modulate", Color.RED, .05)

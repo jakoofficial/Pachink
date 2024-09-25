@@ -25,8 +25,8 @@ func _ready():
 	await get_tree().create_timer(1).timeout
 	transition.reset()
 	board_select_setup()
-	#%Play.grab_focus()
-	%CafeMode.grab_focus()
+	%Play.grab_focus()
+	#%CafeMode.grab_focus()
 
 func board_select_setup():
 	var boardButtons = []

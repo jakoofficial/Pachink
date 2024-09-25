@@ -1,10 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=26 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
 [ext_resource type="Texture2D" uid="uid://bupil0svn52s6" path="res://Sprites/Confetti.png" id="2_gqydx"]
 [ext_resource type="Script" path="res://Scripts/stars_collected.gd" id="3_k5yk0"]
 [ext_resource type="Texture2D" uid="uid://gp48bao5o51v" path="res://Sprites/Indicator.png" id="4_w8avh"]
 [ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="5_1yoko"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxm0i"]
+font_size = 55
+font_color = Color(1, 1, 1, 0.133333)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_i7vso"]
 
@@ -203,12 +207,107 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tutorial:label_settings:font_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Tutorial:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Tutorial:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_try12"]
 _data = {
 "GameOver": SubResource("Animation_rcpn2"),
 "Idle": SubResource("Animation_pgj2m"),
 "RESET": SubResource("Animation_22w3w")
+}
+
+[sub_resource type="Animation" id="Animation_4sdtg"]
+resource_name = "Tutorial"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.133333), Color(1, 1, 1, 0.807843)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tutorial:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qyiah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.133333)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tutorial:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghk43"]
+_data = {
+"RESET": SubResource("Animation_qyiah"),
+"Tutorial": SubResource("Animation_4sdtg")
 }
 
 [node name="GUI" type="Control"]
@@ -221,6 +320,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mkaq4")
+
+[node name="Tutorial" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -146.5
+offset_top = 34.0
+offset_right = 146.5
+offset_bottom = 110.0
+grow_horizontal = 2
+pivot_offset = Vector2(146, 38)
+text = "\"Spacebar\""
+label_settings = SubResource("LabelSettings_pxm0i")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreText" type="Label" parent="."]
 layout_mode = 0
@@ -492,6 +609,11 @@ texture = ExtResource("4_w8avh")
 position = Vector2(0, 15)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_1yoko")
+
+[node name="TutAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghk43")
+}
 
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2" to="." method="_on_pause_back_button_pressed"]
 [connection signal="pressed" from="PauseMenu/CenterContainer/Panel/VBoxContainer/PauseRestartButton3" to="." method="_on_pause_restart_button_pressed"]

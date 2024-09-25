@@ -19,12 +19,16 @@ func _ready() -> void:
 	balls_left_text.text = str(Manager.balls_left)
 	game_over.visible = false
 	%BallLocator.visible = false
-
+	$"%Tutorial".visible = true
+	$TutAnims.play("Tutorial")
 
 func _process(delta: float) -> void:
 	score_text.text = "Score: " + str(Manager.score)
 	balls_left_text.text = "Balls: "+str(Manager.balls_left)
 	%BallLocator.position.x = Manager.ballLocation.x
+	
+	if Manager.balls_left < Manager.ball_count:
+		$"%Tutorial".visible = false
 	
 	if Input.is_action_pressed("quit") and !Manager.gameOver:
 		$PauseMenu/CenterContainer/Panel/VBoxContainer/PauseBackButton2.grab_focus()
