@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=32 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
 [ext_resource type="Texture2D" uid="uid://bupil0svn52s6" path="res://Sprites/Confetti.png" id="2_gqydx"]
@@ -78,6 +78,9 @@ font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_jgjoi"]
 font_size = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts4w1"]
+bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
 
 [sub_resource type="Animation" id="Animation_rcpn2"]
 resource_name = "GameOver"
@@ -527,10 +530,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -150.5
-offset_top = -384.0
-offset_right = 149.5
-offset_bottom = -234.0
+offset_left = -150.0
+offset_top = 32.0
+offset_right = 150.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(150, 75)
@@ -668,9 +671,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -100.0
-offset_top = 10.0
+offset_top = 2.0
 offset_right = 100.0
-offset_bottom = 66.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_47j61")
@@ -704,6 +707,67 @@ text = "..."
 label_settings = SubResource("LabelSettings_jgjoi")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Scoreboard" type="Panel" parent="GameOver"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -84.0
+offset_right = 224.0
+offset_bottom = 36.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ts4w1")
+metadata/_edit_group_ = true
+
+[node name="ScoreboardVbox" type="VBoxContainer" parent="GameOver/Scoreboard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox"]
+layout_mode = 2
+text = "Top 3"
+horizontal_alignment = 1
+
+[node name="first" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/first"]
+layout_mode = 2
+text = "1)"
+
+[node name="firstName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/first"]
+layout_mode = 2
+text = "..................."
+
+[node name="second" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/second"]
+layout_mode = 2
+text = "2)"
+
+[node name="secondName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/second"]
+layout_mode = 2
+text = "..................."
+
+[node name="third" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/third"]
+layout_mode = 2
+text = "3)"
+
+[node name="thirdName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/third"]
+layout_mode = 2
+text = "..................."
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

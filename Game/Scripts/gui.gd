@@ -53,11 +53,12 @@ func _process(delta: float) -> void:
 		
 		if not game_over_anim_done:
 			can_emit_effect = true
+			%Scoreboard.visible = false
 			animation.play("GameOver")
 			game_over_anim_done = true
 			$GameOver/Background/HBoxContainer/HSplitContainer/AgainButton.grab_focus()
 		else:
-			#Wobble effect
+			%Scoreboard.visible = true
 			pass
 	
 	if !Manager.gameOver:

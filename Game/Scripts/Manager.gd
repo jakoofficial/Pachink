@@ -1,6 +1,6 @@
 extends Node
 
-var version = "a07"
+var version = "a07.1"
 var score: int = 0
 var ball_count:int = 5
 var balls_left: int
