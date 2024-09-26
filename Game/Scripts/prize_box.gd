@@ -12,5 +12,7 @@ func _ready() -> void:
 	points_amount.text = str(pointAmount)
 
 func _removePrize_click() -> void:
-	Manager.prizeList.erase(self)
-	queue_free()
+	if Manager.prizeList.erase(pointAmount):
+		Manager.prizeAmount -= 1
+		queue_free()
+	

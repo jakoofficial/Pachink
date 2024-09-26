@@ -117,10 +117,13 @@ func _on_game_settings_back_pressed():
 func _on_save_game_settings_btn_pressed():
 	if Manager.gamerulesChanged:
 		confirm_box.visible = true
+		$CanvasLayer/GameSettings/ConfirmBox/Panel/HBoxContainer/Confirm_Btn.grab_focus()
+
 
 func _on_confirm_box_confirm(confirm:bool):
 	if not confirm:
 		confirm_box.visible = false
+		$"%BallCountSlider".grab_focus()
 		print("Cancel")
 		return
 	set_changes()

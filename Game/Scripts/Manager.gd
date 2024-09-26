@@ -25,7 +25,8 @@ var ballLocation: Vector2
 var cafeMode: bool = false
 var mouseOverSpawn: bool = false
 
-var prizeList: Array = []
+var prizeAmount: int = 0
+var prizeList: Dictionary = {}
 
 func _ready():
 	balls_left = ball_count
