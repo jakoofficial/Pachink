@@ -135,7 +135,7 @@ tracks/4/path = NodePath("GameOver/Background/StarsCollected")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.933333),
+"times": PackedFloat32Array(0.9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -163,20 +163,6 @@ tracks/6/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(180, -0.25, 0, 0.237245, 15, 160, -0.296088, -40, 0.25, 0),
 "times": PackedFloat32Array(0.133333, 1)
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("GameOver/Background/PrizeBox")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.0333334),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_onGameDone"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_pgj2m"]
@@ -673,6 +659,7 @@ scale = Vector2(3, 3)
 texture = SubResource("CompressedTexture2D_lxi36")
 
 [node name="PrizeBox" type="Panel" parent="GameOver/Background"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 1
 anchors_preset = 7
@@ -713,7 +700,7 @@ offset_top = -32.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Prize name"
+text = "..."
 label_settings = SubResource("LabelSettings_jgjoi")
 horizontal_alignment = 1
 vertical_alignment = 1

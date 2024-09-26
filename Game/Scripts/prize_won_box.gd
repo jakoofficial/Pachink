@@ -2,9 +2,14 @@ extends Panel
 
 @onready var prizeWon = %PrizeWonText
 
-func _onGameDone():
+func _checkScore() -> String:
 	var prizeList = Manager.prizeList as Dictionary
-	#Manager.prizeList as Array
-	print(prizeList)
-	#for p in prizeList
+	var curPrize: int = 0
 	
+	for p in prizeList.keys():
+		if Manager.score > p:
+			curPrize = p
+	
+	if curPrize != 0:
+		return prizeList[curPrize]
+	return "Nothing"

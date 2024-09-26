@@ -19,3 +19,6 @@ func gameEndCollectionShow():
 		star.texture = star_collected_spr
 		var multiplier:int = c+1
 		Manager.score += (20*multiplier)
+	
+	var prizeWon: String = %PrizeBox._checkScore()
+	%PrizeWonText.text = prizeWon

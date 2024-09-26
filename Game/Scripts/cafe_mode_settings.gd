@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 
 func _load_prizes():
 	Manager.prizeAmount = 0
-	if Manager.prizeList.size() <= 0: 
+	if Manager.prizeList.size() <= 0:
 		return
 	
 	var keys: Array = Manager.prizeList.keys()
