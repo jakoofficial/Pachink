@@ -54,7 +54,7 @@ func drop_ball():
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("drop_ball"):
-		if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			if not Manager.mouseOverSpawn: return
 		dropPower = lerpf(minPower, maxPower, heldPower)
 		drop_ball()

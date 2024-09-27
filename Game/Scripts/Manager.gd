@@ -28,6 +28,8 @@ var mouseOverSpawn: bool = false
 var prizeAmount: int = 0
 var prizeList: Dictionary = {}
 
+var highscores: Dictionary = {"Jay": 1, "Kasper": 5, "asd": 3}
+
 func _ready():
 	balls_left = ball_count
 

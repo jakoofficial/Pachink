@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/prize_won_box.gd" id="4_jetwu"]
 [ext_resource type="Texture2D" uid="uid://gp48bao5o51v" path="res://Sprites/Indicator.png" id="4_w8avh"]
 [ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="5_1yoko"]
-[ext_resource type="PackedScene" uid="uid://df6fcihheye67" path="res://Nodes/manager.tscn" id="7_8fe8h"]
+[ext_resource type="Script" path="res://Scripts/scoreboard.gd" id="6_5qk61"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pxm0i"]
 font_size = 55
@@ -389,9 +389,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mkaq4")
 
-[node name="Manager" parent="." instance=ExtResource("7_8fe8h")]
-unique_name_in_owner = true
-
 [node name="Tutorial" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -710,7 +707,6 @@ vertical_alignment = 1
 
 [node name="Scoreboard" type="Panel" parent="GameOver"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -721,6 +717,7 @@ offset_right = 224.0
 offset_bottom = 36.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ts4w1")
+script = ExtResource("6_5qk61")
 metadata/_edit_group_ = true
 
 [node name="ScoreboardVbox" type="VBoxContainer" parent="GameOver/Scoreboard"]

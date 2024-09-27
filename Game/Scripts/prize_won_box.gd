@@ -7,7 +7,7 @@ func _checkScore() -> String:
 	var curPrize: int = 0
 	
 	for p in prizeList.keys():
-		if Manager.score > p:
+		if Manager.score >= p:
 			curPrize = p
 	
 	if curPrize != 0:
