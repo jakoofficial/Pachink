@@ -94,8 +94,10 @@ func _on_settings_back_pressed():
 	menu.visible = true
 
 func _on_quit_pressed():
-	get_tree().quit()
-
+	if not Manager.isBrowser: get_tree().quit()
+	Manager.windowMode = DisplayServer.WINDOW_MODE_WINDOWED
+	Manager._set_window_mode()
+	
 func _on_logo_mouse_entered():
 	mouse_over = true
 

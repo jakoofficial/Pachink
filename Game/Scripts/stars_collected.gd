@@ -22,4 +22,5 @@ func gameEndCollectionShow():
 	
 	var prizeWon: String = %PrizeBox._checkScore()
 	%PrizeWonText.text = prizeWon
-	%Scoreboard._checkScores()
+	if %GameOver.has_node("%Scoreboard"):
+		%Scoreboard._checkScores()

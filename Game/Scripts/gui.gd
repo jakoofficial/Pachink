@@ -53,13 +53,14 @@ func _process(delta: float) -> void:
 		
 		if not game_over_anim_done:
 			can_emit_effect = true
-			%Scoreboard.visible = false
+			if %GameOver.has_node("%Scoreboard"):
+				%Scoreboard.visible = false
 			animation.play("GameOver")
 			game_over_anim_done = true
 			$GameOver/Background/HBoxContainer/HSplitContainer/AgainButton.grab_focus()
 		else:
-			%Scoreboard.visible = true
-			pass
+			if %GameOver.has_node("%Scoreboard"):
+				%Scoreboard.visible = true
 	
 	if !Manager.gameOver:
 		if Manager.is_paused:
@@ -117,6 +118,9 @@ func _on_again_button_pressed():
 	
 	for c in stars_collected.get_children():
 		c.visible = false
+	
+	if %GameOver.has_node("%Scoreboard"):
+		$"%Scoreboard".queue_free()
 	
 	animation.play_backwards("GameOver")
 	await get_tree().create_timer(1.45).timeout

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://ypc10y7hubhg"]
+
+[ext_resource type="Script" path="res://Scripts/scoreboard_vbox.gd" id="1_4yyxa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uruqt"]
+font_size = 21
+
+[node name="ScoreboardVbox" type="VBoxContainer" groups=["scoreboard"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -48.5
+offset_right = 48.5
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4yyxa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Highscore"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+
+[node name="Highscore" type="Label" parent="."]
+layout_mode = 2
+text = "100000"
+label_settings = SubResource("LabelSettings_uruqt")
+horizontal_alignment = 1
+
+[node name="VSplitContainer" type="VSplitContainer" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="HighscoreName" type="Label" parent="."]
+layout_mode = 2
+text = "Player name"
+horizontal_alignment = 1

@@ -1,6 +1,8 @@
 extends Node
 
-var version = "a07.1"
+var version = "a07.2"
+var isBrowser: bool = true
+
 var score: int = 0
 var ball_count:int = 5
 var balls_left: int
@@ -28,7 +30,7 @@ var mouseOverSpawn: bool = false
 var prizeAmount: int = 0
 var prizeList: Dictionary = {}
 
-var highscores: Dictionary = {"Jay": 1, "Kasper": 5, "asd": 3}
+var highscore: Array = ["None", "0"]
 
 func _ready():
 	balls_left = ball_count

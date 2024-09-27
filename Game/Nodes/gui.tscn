@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bk86wlashke5x"]
+[gd_scene load_steps=36 format=3 uid="uid://bk86wlashke5x"]
 
 [ext_resource type="Script" path="res://Scripts/gui.gd" id="1_mkaq4"]
 [ext_resource type="Texture2D" uid="uid://bupil0svn52s6" path="res://Sprites/Confetti.png" id="2_gqydx"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://gp48bao5o51v" path="res://Sprites/Indicator.png" id="4_w8avh"]
 [ext_resource type="Texture2D" uid="uid://b2fyedlbxwiru" path="res://Sprites/Ball.png" id="5_1yoko"]
 [ext_resource type="Script" path="res://Scripts/scoreboard.gd" id="6_5qk61"]
+[ext_resource type="PackedScene" uid="uid://ypc10y7hubhg" path="res://Nodes/scoreboard_vbox.tscn" id="6_awb6g"]
+[ext_resource type="Theme" uid="uid://hrjckykqfav7" path="res://Themes/Theme.tres" id="6_rmlmv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pxm0i"]
 font_size = 55
@@ -81,6 +83,21 @@ font_size = 19
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ts4w1"]
 bg_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsprx"]
+bg_color = Color(0.281187, 0.281187, 0.281187, 1)
+
+[sub_resource type="Theme" id="Theme_jp84f"]
+Button/styles/normal = SubResource("StyleBoxFlat_qsprx")
 
 [sub_resource type="Animation" id="Animation_rcpn2"]
 resource_name = "GameOver"
@@ -512,6 +529,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GameOver" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -581,14 +599,14 @@ dragger_visibility = 1
 
 [node name="AgainButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../MainmenuButton")
+focus_neighbor_left = NodePath("../../../../Scoreboard/NewHighscoreArea/NewHighscoreTextEdit")
 focus_neighbor_right = NodePath("../MainmenuButton")
 text = "Play again"
 
 [node name="MainmenuButton" type="Button" parent="GameOver/Background/HBoxContainer/HSplitContainer"]
 layout_mode = 2
 focus_neighbor_left = NodePath("../AgainButton")
-focus_neighbor_right = NodePath("../AgainButton")
+focus_neighbor_right = NodePath("../../../../Scoreboard/NewHighscoreArea/NewHighscoreTextEdit")
 text = "Main menu"
 
 [node name="EndEffect_Left" type="CPUParticles2D" parent="GameOver/Background"]
@@ -714,57 +732,46 @@ anchor_bottom = 0.5
 offset_left = 24.0
 offset_top = -84.0
 offset_right = 224.0
-offset_bottom = 36.0
+offset_bottom = 20.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ts4w1")
 script = ExtResource("6_5qk61")
-metadata/_edit_group_ = true
 
-[node name="ScoreboardVbox" type="VBoxContainer" parent="GameOver/Scoreboard"]
+[node name="ScoreboardVbox" parent="GameOver/Scoreboard" instance=ExtResource("6_awb6g")]
 layout_mode = 1
-anchors_preset = 15
+
+[node name="NewHighscoreArea" type="VBoxContainer" parent="GameOver/Scoreboard"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = 64.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+metadata/_edit_group_ = true
 
-[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox"]
+[node name="NewHighscoreTextEdit" type="LineEdit" parent="GameOver/Scoreboard/NewHighscoreArea"]
 layout_mode = 2
-text = "Top 3"
-horizontal_alignment = 1
+focus_neighbor_left = NodePath("../../../Background/HBoxContainer/HSplitContainer/AgainButton")
+focus_neighbor_top = NodePath("../SetHighscoreButton")
+focus_neighbor_right = NodePath("../../../Background/HBoxContainer/HSplitContainer/MainmenuButton")
+focus_neighbor_bottom = NodePath("../SetHighscoreButton")
+theme = ExtResource("6_rmlmv")
+placeholder_text = "Insert name here"
+drag_and_drop_selection_enabled = false
 
-[node name="first" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
+[node name="SetHighscoreButton" type="Button" parent="GameOver/Scoreboard/NewHighscoreArea"]
+custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/first"]
-layout_mode = 2
-text = "1)"
-
-[node name="firstName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/first"]
-layout_mode = 2
-text = "..................."
-
-[node name="second" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/second"]
-layout_mode = 2
-text = "2)"
-
-[node name="secondName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/second"]
-layout_mode = 2
-text = "..................."
-
-[node name="third" type="HBoxContainer" parent="GameOver/Scoreboard/ScoreboardVbox"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/third"]
-layout_mode = 2
-text = "3)"
-
-[node name="thirdName" type="Label" parent="GameOver/Scoreboard/ScoreboardVbox/third"]
-layout_mode = 2
-text = "..................."
+focus_neighbor_left = NodePath("../../../Background/HBoxContainer/HSplitContainer/MainmenuButton")
+focus_neighbor_top = NodePath("../NewHighscoreTextEdit")
+focus_neighbor_right = NodePath("../../../Background/HBoxContainer/HSplitContainer/AgainButton")
+focus_neighbor_bottom = NodePath("../NewHighscoreTextEdit")
+theme = SubResource("Theme_jp84f")
+text = "Set score"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -800,3 +807,5 @@ libraries = {
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/AgainButton" to="." method="_on_again_button_pressed"]
 [connection signal="pressed" from="GameOver/Background/HBoxContainer/HSplitContainer/MainmenuButton" to="." method="_on_mainmenu_button_pressed"]
 [connection signal="finished" from="GameOver/Background/EndEffect_Right" to="." method="_on_end_effect_finished"]
+[connection signal="gui_input" from="GameOver/Scoreboard/NewHighscoreArea/NewHighscoreTextEdit" to="GameOver/Scoreboard" method="_on_new_highscore_text_edit_input"]
+[connection signal="pressed" from="GameOver/Scoreboard/NewHighscoreArea/SetHighscoreButton" to="GameOver/Scoreboard" method="_setHighscore"]
