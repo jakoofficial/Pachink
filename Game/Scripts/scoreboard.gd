@@ -30,15 +30,21 @@ func _checkScores() -> void:
 func _setHighscore() -> void:
 	if new_highscore_name_textEdit.text.is_empty(): return
 	
-	# set visible highscore
-	highscore_name.text = str(new_highscore_name_textEdit.text)
-	highscore.text = str(Manager.score)
+	print(new_highscore_name_textEdit.size)
 	
-	# set global highscore for session
-	Manager.highscore[0] = new_highscore_name_textEdit.text
-	Manager.highscore[1] = Manager.score
-	$"../Background/HBoxContainer/HSplitContainer/AgainButton".grab_focus()
-	new_highscore_area.visible = false
+	for t in new_highscore_name_textEdit.text:
+		if not t == " ":
+			# set visible highscore
+			highscore_name.text = str(new_highscore_name_textEdit.text)
+			highscore.text = str(Manager.score)
+			
+			# set global highscore for session
+			Manager.highscore[0] = new_highscore_name_textEdit.text
+			Manager.highscore[1] = Manager.score
+			$"../Background/HBoxContainer/HSplitContainer/AgainButton".grab_focus()
+			new_highscore_area.visible = false
+			break
+	
 
 func _on_new_highscore_text_edit_input(event: InputEvent) -> void:
 	if event.is_action_released("accept"):
