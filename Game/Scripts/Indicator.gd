@@ -49,8 +49,6 @@ func drop_ball():
 			tween.tween_property(sprite, "rotation_degrees", 10, .1).as_relative()
 		tween.tween_property(sprite, "modulate", Color.WHITE, .05)
 		#tween.tween_property(sprite, "scale", Vector2(1.1,1.1), .1)
-		
-
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_released("drop_ball"):

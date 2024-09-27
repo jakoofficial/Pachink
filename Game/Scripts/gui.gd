@@ -10,6 +10,7 @@ extends Control
 @onready var end_effect_right = $GameOver/Background/EndEffect_Right
 @onready var end_effect_left = $GameOver/Background/EndEffect_Left
 @onready var stars_collected = $GameOver/Background/StarsCollected
+@onready var balls: Node2D = $"../../Balls"
 
 var game_over_anim_done = false
 var can_emit_effect = false
@@ -38,6 +39,9 @@ func _process(delta: float) -> void:
 		%BallLocator.visible = true
 	else:
 		%BallLocator.visible = false
+	
+	if Manager.balls_left == 0 and not Manager.gameOver and balls.get_children().size() <= 0:
+		Manager.gameOver = true
 	
 	if Manager.gameOver:
 		var starParentNode = $"../../Stars"

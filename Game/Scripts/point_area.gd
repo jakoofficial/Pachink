@@ -12,6 +12,7 @@ extends Area2D
 
 @onready var points_text = $pointsText
 @onready var effect = $CPUParticles2D as CPUParticles2D
+@onready var balls: Node2D = $"../../Balls"
 
 func _ready() -> void:
 	points_text.text = str(points)
